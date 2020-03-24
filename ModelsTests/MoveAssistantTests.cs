@@ -289,7 +289,7 @@ namespace ModelsTests
                 .SingleOrDefault(p => p.CurrentLocation.Coordinate == "A1");
             // Fake previous moves that places pieces in desired locations.
             piece.CurrentLocation = origin;
-            opponentPiece.CurrentLocation = gc.GetLocation("A4");
+            opponentPiece.CurrentLocation = gc.GetLocation("A2");
 
             // Act
             bool isLegalMoveThroughRows =

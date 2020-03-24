@@ -17,7 +17,7 @@ namespace Models
             // Check if can move through the number of columns
             int originCol = GetColumnNumber(origin.Coordinate);
             int destCol = GetColumnNumber(destination.Coordinate);
-            bool isIncremented = IsIncremented(originCol, destCol);
+            bool isIncremented = IsColumnIncremented(originCol, destCol);
             int maxSquares = CalculateMaxSquares(originCol, destCol, isIncremented);
             int row = GetRowNumber(origin.Coordinate);            
             
@@ -61,7 +61,7 @@ namespace Models
             // Check if can move through the number of rows
             int originRow = GetRowNumber(origin.Coordinate);
             int destRow = GetRowNumber(destination.Coordinate);
-            bool isRowIncremented = IsIncremented(opponent);
+            bool isRowIncremented = IsRowIncremented(originRow, destRow);
             int maxSquares = CalculateMaxSquares(originRow, destRow, isRowIncremented);
             string letter = GetColumnLetter(origin.Coordinate);
 
@@ -135,9 +135,9 @@ namespace Models
             return int.Parse(coordinate.Substring(1, 1));
         }
 
-        private static bool IsIncremented (Player otherPlayer)
+        private static bool IsRowIncremented (int originRow, int destRow)
         {
-            if (otherPlayer.PlayerColor == Color.Black)
+            if (originRow > destRow)
                 // Moving up into smaller rows
                 return false;
             else
@@ -145,7 +145,7 @@ namespace Models
                 return true;
         }
 
-        private static bool IsIncremented(int originCol, int destCol)
+        private static bool IsColumnIncremented(int originCol, int destCol)
         {
             if (originCol > destCol)
                 // Moving left into smaller columns
