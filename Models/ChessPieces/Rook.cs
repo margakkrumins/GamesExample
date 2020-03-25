@@ -7,7 +7,6 @@ namespace Models.ChessPieces
 {
     public class Rook : ChessPiece
     {
-
         public Rook(
             string name, string text, Color textColor, Location currentLocation, 
             Location previousLocation, bool canJump)

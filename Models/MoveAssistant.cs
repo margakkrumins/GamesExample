@@ -8,7 +8,7 @@ namespace Models
     public static class MoveAssistant
     {
         public static bool IsLegalMoveAcrossColumns(
-            Player player, Player opponent, Location origin, Location destination)
+            Player player, Player opponent, Location origin, Location destination, int limit = 7)
         {
             // Check if is in same row
             if (GetRowNumber(origin.Coordinate) != GetRowNumber(destination.Coordinate))
@@ -19,6 +19,11 @@ namespace Models
             int destCol = GetColumnNumber(destination.Coordinate);
             bool isIncremented = IsColumnIncremented(originCol, destCol);
             int maxSquares = CalculateMaxSquares(originCol, destCol, isIncremented);
+
+            // Check if move exceeds limits
+            if (limit < 7 && maxSquares > limit)
+                return false; 
+            
             int row = GetRowNumber(origin.Coordinate);            
             
             // Check if there are any pieces obstructing the path prior to destination.
@@ -52,7 +57,7 @@ namespace Models
         }
 
         public static bool IsLegalMoveThroughRows(
-            Player player, Player opponent, Location origin, Location destination)
+            Player player, Player opponent, Location origin, Location destination, int limit = 7)
         {
             // Check if is in same column
             if (GetColumnNumber(origin.Coordinate) != GetColumnNumber(destination.Coordinate))
@@ -63,6 +68,11 @@ namespace Models
             int destRow = GetRowNumber(destination.Coordinate);
             bool isRowIncremented = IsRowIncremented(originRow, destRow);
             int maxSquares = CalculateMaxSquares(originRow, destRow, isRowIncremented);
+
+            // Check if move exceeds limit
+            if (limit < 7 && maxSquares > limit)
+                return false;
+
             string letter = GetColumnLetter(origin.Coordinate);
 
             // Check if there are any pieces obstructing the path prior to destination.
@@ -95,8 +105,128 @@ namespace Models
             return true;
         }
 
+        internal static bool IsLegalMoveDiagonally(
+            Player player, Player opponent, Location origin, Location destination, int limit = 7)
+        {
+            // Example: C1 to C3 (Both col & row increase)
+            // Example: H8 to G7 (Both col & row decrease)
+            // Example: C8 to H3 (Col increase, row decrease)
+            // Example: F1 to A6 (Col decrease, row increase)
+            // Check if is diagonal move
+
+            // Both col & row increment by 1
+            // Both col & row decrement by 1
+            // Col increment by 1 & row decrement by 1
+            // Col decrement by 1 & row increment by 1
+
+            // Get row and column numbers
+            int originRow = GetRowNumber(origin.Coordinate);
+            int destRow = GetRowNumber(destination.Coordinate);
+
+            bool isRowIncremented = IsRowIncremented(originRow, destRow);
+            int maxSquaresForRows = CalculateMaxSquares(originRow, destRow, isRowIncremented);
+
+            // Check if move exceeds row limits
+            if (limit < 7 && maxSquaresForRows > limit)
+                return false;
+
+            int originCol = GetColumnNumber(origin.Coordinate);
+            int destCol = GetColumnNumber(destination.Coordinate);
+            bool isColIncremented = IsColumnIncremented(originCol, destCol);
+            int maxSquaresForColumns = CalculateMaxSquares(originCol, destCol, isColIncremented);
+
+            // Check if move exceeds column limits
+            if (limit < 7 && maxSquaresForColumns > limit)
+                return false;
+
+            // ToDo: Set up row iteration logic and within each branch, set up column
+            // iteration logic and perform checks at intersection points
+
+            // Note: cannot simply loop rows within column loop or will get "false positives,"
+            // since each row will loop for a specific column in loop.
+            // Need to apply both dimensions' increment/decrement logic but only check 1 row
+            // for each column
+
+            // Build two <int, int> seqNo & column or row number dictionaries, using the
+            // increment/decrement logic of each dimension, then for each seqNo of ColumnDictionary
+            // form coordinate by concatenating column value and row value for same seqNo?
+            Dictionary<int, int> columns = new Dictionary<int, int>(limit);
+            Dictionary<int, int> rows = new Dictionary<int, int>(limit);
+            
+            LoadColunnDictionary(originCol, destCol, isColIncremented, maxSquaresForColumns, columns);
+            LoadRowDictionary(originRow, destRow, isRowIncremented, maxSquaresForRows, rows);
+
+            // Both the dictionaries should have the same sequence numbers, 
+            // since are on the same diagonal trajectory
+            foreach (var kvp in columns)
+            {
+                string letter = GetColumnLetter(kvp.Value);
+                int rowNumber = rows[kvp.Key];
+
+                string currentCoord = $"{letter}{rowNumber}";
+
+                if (IsOccupied(player, opponent, currentCoord))
+                    return false;
+            }
+
+            // If got here, piece can move to destination
+            return true;
+        }
+
+        public static bool IsCapture(Player opponent, Location destination)
+        {
+            return opponent.Pieces
+                              .Exists(
+                                x => x.CurrentLocation.Coordinate
+                                == destination.Coordinate);
+        }
+
 
         #region Helper Methods
+        
+        private static void LoadColunnDictionary(int originCol, int destCol,
+            bool isColIncremented, int maxSquaresForColumns, Dictionary<int, int> columns)
+        {
+            // Load ColumnDictionary with column numbers, in sequence
+            if (isColIncremented)
+            {
+                for (int colNo = originCol + 1; colNo < (originCol + maxSquaresForColumns); colNo++)
+                {
+                    columns.Add(colNo, colNo);
+                }
+            }
+            else
+            {
+                int seqNo = 0;
+                for (int colNo = originCol - 1; colNo > destCol + 1; colNo--)
+                {
+                    seqNo++;
+                    columns.Add(seqNo, colNo);
+                }
+            }
+        }
+
+        private static void LoadRowDictionary(int originRow, int destRow, 
+            bool isRowIncremented, int maxSquaresForRows, Dictionary<int, int> rows)
+        {
+            //Load RowDictionary with row numbers, in sequence.
+            if (isRowIncremented)
+            {
+                for (int rowNo = originRow; rowNo < (originRow + maxSquaresForRows); rowNo++)
+                {
+                    rows.Add(rowNo, rowNo);
+                }
+            }
+            else
+            {
+                int seqNo = 0;
+                for (int rowNo = originRow - 1; rowNo > destRow + 1; rowNo--)
+                {
+                    seqNo++;
+                    rows.Add(seqNo, rowNo);
+                }
+            }
+        }
 
         private static bool IsOccupied(Player player, Player opponent, string coordinate)
         {

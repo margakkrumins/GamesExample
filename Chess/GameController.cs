@@ -74,14 +74,14 @@ namespace Chess
                     //ChessPiece six = new ChessPiece("B2", "B", player.PlayerColor, GetLocation("F1"), null);
                     //ChessPiece seven = new ChessPiece("Kn2", "Kn", player.PlayerColor, GetLocation("G1"), null);
                     ChessPiece eight = new Rook("R2", "R", player.PlayerColor, GetLocation("H1"), null, false) as ChessPiece;
-                    //ChessPiece nine = new ChessPiece("P1", "P", player.PlayerColor, GetLocation("A2"), null);
-                    //ChessPiece ten = new ChessPiece("P1", "P", player.PlayerColor, GetLocation("B2"), null);
-                    //ChessPiece eleven = new ChessPiece("P1", "P", player.PlayerColor, GetLocation("C2"), null);
-                    //ChessPiece twelve = new ChessPiece("P2", "P", player.PlayerColor, GetLocation("D2"), null);
-                    //ChessPiece thirteen = new ChessPiece("P3", "P", player.PlayerColor, GetLocation("E2"), null);
-                    //ChessPiece fourteen = new ChessPiece("P4", "P", player.PlayerColor, GetLocation("F2"), null);
-                    //ChessPiece fifteen = new ChessPiece("P5", "P", player.PlayerColor, GetLocation("G2"), null);
-                    //ChessPiece sixteen = new ChessPiece("P6", "P", player.PlayerColor, GetLocation("H2"), null);
+                    ChessPiece nine = new Pawn("P1", "P", player.PlayerColor, GetLocation("A2"), null, false) as ChessPiece;
+                    ChessPiece ten = new Pawn("P1", "P", player.PlayerColor, GetLocation("B2"), null, false) as ChessPiece;
+                    ChessPiece eleven = new Pawn("P1", "P", player.PlayerColor, GetLocation("C2"), null, false) as ChessPiece;
+                    ChessPiece twelve = new Pawn("P2", "P", player.PlayerColor, GetLocation("D2"), null, false) as ChessPiece;
+                    ChessPiece thirteen = new Pawn("P3", "P", player.PlayerColor, GetLocation("E2"), null, false) as ChessPiece;
+                    ChessPiece fourteen = new Pawn("P4", "P", player.PlayerColor, GetLocation("F2"), null, false) as ChessPiece;
+                    ChessPiece fifteen = new Pawn("P5", "P", player.PlayerColor, GetLocation("G2"), null, false) as ChessPiece;
+                    ChessPiece sixteen = new Pawn("P6", "P", player.PlayerColor, GetLocation("H2"), null, false) as ChessPiece;
 
                     player.Pieces = new List<ChessPiece>();
                     player.Pieces.Add(one);
@@ -92,14 +92,14 @@ namespace Chess
                     //player.Pieces.Add(six);
                     //player.Pieces.Add(seven);
                     player.Pieces.Add(eight);
-                    //player.Pieces.Add(nine);
-                    //player.Pieces.Add(ten);
-                    //player.Pieces.Add(eleven);
-                    //player.Pieces.Add(twelve);
-                    //player.Pieces.Add(thirteen);
-                    //player.Pieces.Add(fourteen);
-                    //player.Pieces.Add(fifteen);
-                    //player.Pieces.Add(sixteen);
+                    player.Pieces.Add(nine);
+                    player.Pieces.Add(ten);
+                    player.Pieces.Add(eleven);
+                    player.Pieces.Add(twelve);
+                    player.Pieces.Add(thirteen);
+                    player.Pieces.Add(fourteen);
+                    player.Pieces.Add(fifteen);
+                    player.Pieces.Add(sixteen);
                 }
                 else
                 {
@@ -111,14 +111,14 @@ namespace Chess
                     //ChessPiece six = new ChessPiece("B4", "B", player.PlayerColor, GetLocation("F8"), null);
                     //ChessPiece seven = new ChessPiece("Kn4", "Kn", player.PlayerColor, GetLocation("G8"), null);
                     ChessPiece eight = new Rook("R4", "R", player.PlayerColor, GetLocation("H8"), null, false) as ChessPiece;
-                    //ChessPiece nine = new ChessPiece("P7", "P", player.PlayerColor, GetLocation("A7"), null);
-                    //ChessPiece ten = new ChessPiece("P8", "P", player.PlayerColor, GetLocation("B7"), null);
-                    //ChessPiece eleven = new ChessPiece("P9", "P", player.PlayerColor, GetLocation("C7"), null);
-                    //ChessPiece twelve = new ChessPiece("P10", "P", player.PlayerColor, GetLocation("D7"), null);
-                    //ChessPiece thirteen = new ChessPiece("P11", "P", player.PlayerColor, GetLocation("E7"), null);
-                    //ChessPiece fourteen = new ChessPiece("P12", "P", player.PlayerColor, GetLocation("F7"), null);
-                    //ChessPiece fifteen = new ChessPiece("P13", "P", player.PlayerColor, GetLocation("G7"), null);
-                    //ChessPiece sixteen = new ChessPiece("P14", "P", player.PlayerColor, GetLocation("H7"), null);
+                    ChessPiece nine = new Pawn("P7", "P", player.PlayerColor, GetLocation("A7"), null, false) as ChessPiece;
+                    ChessPiece ten = new Pawn("P8", "P", player.PlayerColor, GetLocation("B7"), null, false) as ChessPiece;
+                    ChessPiece eleven = new Pawn("P9", "P", player.PlayerColor, GetLocation("C7"), null, false) as ChessPiece;
+                    ChessPiece twelve = new Pawn("P10", "P", player.PlayerColor, GetLocation("D7"), null, false) as ChessPiece;
+                    ChessPiece thirteen = new Pawn("P11", "P", player.PlayerColor, GetLocation("E7"), null, false) as ChessPiece;
+                    ChessPiece fourteen = new Pawn("P12", "P", player.PlayerColor, GetLocation("F7"), null, false) as ChessPiece;
+                    ChessPiece fifteen = new Pawn("P13", "P", player.PlayerColor, GetLocation("G7"), null, false) as ChessPiece;
+                    ChessPiece sixteen = new Pawn("P14", "P", player.PlayerColor, GetLocation("H7"), null, false) as ChessPiece;
 
                     player.Pieces = new List<ChessPiece>();
                     player.Pieces.Add(one);
@@ -129,14 +129,14 @@ namespace Chess
                     //player.Pieces.Add(six);
                     //player.Pieces.Add(seven);
                     player.Pieces.Add(eight);
-                    //player.Pieces.Add(nine);
-                    //player.Pieces.Add(ten);
-                    //player.Pieces.Add(eleven);
-                    //player.Pieces.Add(twelve);
-                    //player.Pieces.Add(thirteen);
-                    //player.Pieces.Add(fourteen);
-                    //player.Pieces.Add(fifteen);
-                    //player.Pieces.Add(sixteen);
+                    player.Pieces.Add(nine);
+                    player.Pieces.Add(ten);
+                    player.Pieces.Add(eleven);
+                    player.Pieces.Add(twelve);
+                    player.Pieces.Add(thirteen);
+                    player.Pieces.Add(fourteen);
+                    player.Pieces.Add(fifteen);
+                    player.Pieces.Add(sixteen);
                 }
             }
         }
@@ -169,7 +169,7 @@ namespace Chess
             if (DidMovePiece(player, opponent, origin, destination, piece))
             {
                 // Update state of captured piece
-                bool isCaptured = IsCapture(opponent, destination);
+                bool isCaptured = MoveAssistant.IsCapture(opponent, destination);
                 if (isCaptured)
                 {
                     ChessPiece capturedPiece =
@@ -254,14 +254,6 @@ namespace Chess
         //    // If we got here, didn't satisfy any tests.
         //    return false;
         //}
-
-        public bool IsCapture(Player opponent, Location destination)
-        {
-            return opponent.Pieces
-                              .Exists(
-                                x => x.CurrentLocation.Coordinate
-                                == destination.Coordinate);
-        }
 
         public int GetOtherPlayerIndex(int playerIndex)
         {
