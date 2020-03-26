@@ -327,6 +327,109 @@ namespace ModelsTests
             Assert.IsFalse(isLegalMoveThroughRows);
         }
 
+        [Test]
+        public void IsLegalMoveThroughRows_IsFalse_Test_005()
+        {
+            // Arrange IsFalse because exceeded limit
+            GameController gc = new GameController();
+
+            Location origin = gc.GetLocation("A7");
+            Location destination = gc.GetLocation("A4");
+            int playerIndex = 1;
+            int otherPlayerIndex = gc.GetOtherPlayerIndex(playerIndex);
+            ChessPiece piece = gc.Players[playerIndex].Pieces
+                .SingleOrDefault(p => p.CurrentLocation.Coordinate == "A7");
+            // Fake previous moves that places pieces in desired locations.
+            piece.CurrentLocation = origin;
+
+            // Act
+            bool isLegalMoveThroughRows =
+                MoveAssistant.IsLegalMoveThroughRows(
+                    gc.Players[playerIndex], gc.Players[otherPlayerIndex], origin, destination, 2, false);
+
+            // Assert
+            Assert.IsFalse(isLegalMoveThroughRows);
+        }
+
+        [Test]
+        public void IsLegalMoveThroughRows_IsFalse_Test_006()
+        {
+            // Arrange IsFalse because exceeded limit for subsequent moves of pawn
+            GameController gc = new GameController();
+
+            Location origin = gc.GetLocation("A5");
+            Location destination = gc.GetLocation("A3");
+            int playerIndex = 1;
+            int otherPlayerIndex = gc.GetOtherPlayerIndex(playerIndex);
+            ChessPiece piece = gc.Players[playerIndex].Pieces
+                .SingleOrDefault(p => p.CurrentLocation.Coordinate == "A7");
+            // Fake previous moves that places pieces in desired locations.
+            piece.PreviousLocation = gc.GetLocation("A7");
+            piece.CurrentLocation = origin;
+
+            // Act
+            bool isLegalMoveThroughRows =
+                MoveAssistant.IsLegalMoveThroughRows(
+                    gc.Players[playerIndex], gc.Players[otherPlayerIndex], origin, destination, 1, false);
+
+            // Assert
+            Assert.IsFalse(isLegalMoveThroughRows);
+        }
+
+        [Test]
+        public void IsLegalMoveThroughRows_IsFalse_Test_007()
+        {
+            // Arrange IsFalse because pawn retreated
+            GameController gc = new GameController();
+
+            Location origin = gc.GetLocation("A5");
+            Location destination = gc.GetLocation("A6");
+            int playerIndex = 1;
+            int otherPlayerIndex = gc.GetOtherPlayerIndex(playerIndex);
+            ChessPiece piece = gc.Players[playerIndex].Pieces
+                .SingleOrDefault(p => p.CurrentLocation.Coordinate == "A7");
+            // Fake previous moves that places pieces in desired locations.
+            piece.CurrentLocation = origin;
+
+            // Act
+            bool isLegalMoveThroughRows =
+                MoveAssistant.IsLegalMoveThroughRows(
+                    gc.Players[playerIndex], gc.Players[otherPlayerIndex], origin, destination, 2, false);
+
+            // Assert
+            Assert.IsFalse(isLegalMoveThroughRows);
+        }
+
+
+        #endregion
+
+        #region Test Diagonal Moves
+
+        [Test]
+        public void IsLegalMoveDiagonally_IsTrue_Test_001()
+        {
+            // Arrange diagonal capture by pawn
+            GameController gc = new GameController();
+
+            Location origin = gc.GetLocation("A7");
+            Location destination = gc.GetLocation("B6");
+            int playerIndex = 1;
+            int otherPlayerIndex = gc.GetOtherPlayerIndex(playerIndex);
+            ChessPiece piece = gc.Players[playerIndex].Pieces
+                .SingleOrDefault(p => p.CurrentLocation.Coordinate == "A8");
+            ChessPiece opponentPiece = gc.Players[otherPlayerIndex].Pieces
+                .SingleOrDefault(p => p.CurrentLocation.Coordinate == "B2");
+            // Fake previous moved that places pieced in desired locations.
+            piece.CurrentLocation = origin;
+            opponentPiece.CurrentLocation = gc.GetLocation("B6");
+
+            // Act
+            bool isLegalMoveDiagonally =
+                MoveAssistant.IsLegalMoveDiagonally(
+                    gc.Players[playerIndex], gc.Players[otherPlayerIndex], origin, destination, 1, false);
+            Assert.IsTrue(isLegalMoveDiagonally);
+        }
+
 
         #endregion
 

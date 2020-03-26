@@ -209,6 +209,9 @@ namespace Chess
                 case Rook rook:
                     didMove = rook.DidMove(player, opponent, origin, destination);
                     break;
+                case Pawn pawn:
+                    didMove = pawn.DidMove(player, opponent, origin, destination);
+                    break;
                 case null:                    
                     break;
                 default:

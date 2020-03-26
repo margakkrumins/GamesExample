@@ -56,8 +56,8 @@ namespace Models
             return true;
         }
 
-        public static bool IsLegalMoveThroughRows(
-            Player player, Player opponent, Location origin, Location destination, int limit = 7)
+        public static bool IsLegalMoveThroughRows(Player player, Player opponent, 
+            Location origin, Location destination, int limit = 7, bool canRetreat = true)
         {
             // Check if is in same column
             if (GetColumnNumber(origin.Coordinate) != GetColumnNumber(destination.Coordinate))
@@ -67,6 +67,14 @@ namespace Models
             int originRow = GetRowNumber(origin.Coordinate);
             int destRow = GetRowNumber(destination.Coordinate);
             bool isRowIncremented = IsRowIncremented(originRow, destRow);
+
+            // Handle pieces that cannot retreat
+            if (canRetreat == false && isRowIncremented == false && player.PlayerColor == Color.Black)
+                return false;
+
+            if (canRetreat == false && isRowIncremented == true && canRetreat == false && player.PlayerColor == Color.BurlyWood)
+                return false;
+
             int maxSquares = CalculateMaxSquares(originRow, destRow, isRowIncremented);
 
             // Check if move exceeds limit
@@ -105,25 +113,29 @@ namespace Models
             return true;
         }
 
-        internal static bool IsLegalMoveDiagonally(
-            Player player, Player opponent, Location origin, Location destination, int limit = 7)
+        public static bool IsLegalMoveDiagonally(
+            Player player, Player opponent, Location origin, Location destination, int limit = 7, bool canRetreat = true)
         {
-            // Example: C1 to C3 (Both col & row increase)
-            // Example: H8 to G7 (Both col & row decrease)
-            // Example: C8 to H3 (Col increase, row decrease)
-            // Example: F1 to A6 (Col decrease, row increase)
             // Check if is diagonal move
 
-            // Both col & row increment by 1
-            // Both col & row decrement by 1
-            // Col increment by 1 & row decrement by 1
-            // Col decrement by 1 & row increment by 1
+            // Possibilities:
+            //  Both col & row increment by 1
+            //  Both col & row decrement by 1
+            //   Col increment by 1 & row decrement by 1
+            //  Col decrement by 1 & row increment by 1
 
             // Get row and column numbers
             int originRow = GetRowNumber(origin.Coordinate);
             int destRow = GetRowNumber(destination.Coordinate);
 
             bool isRowIncremented = IsRowIncremented(originRow, destRow);
+
+            if (canRetreat == false && isRowIncremented == false && player.PlayerColor == Color.Black)
+                return false;
+
+            if (canRetreat == false && isRowIncremented == true && player.PlayerColor == Color.BurlyWood)
+                return false;
+
             int maxSquaresForRows = CalculateMaxSquares(originRow, destRow, isRowIncremented);
 
             // Check if move exceeds row limits
