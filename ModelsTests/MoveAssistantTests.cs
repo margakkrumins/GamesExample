@@ -8,7 +8,9 @@ namespace ModelsTests
 {   
     public class Tests
     {
-        //ToDo: Add more tests, especially for edge cases.
+        // ToDo: Add more tests, especially for edge cases.
+        // ToDo: Arrange tests without dependencies, but for now, limiting testing
+        // to tests within context of how board is set up.
 
         #region Test Moves Across Columns
 
@@ -416,7 +418,7 @@ namespace ModelsTests
             int playerIndex = 1;
             int otherPlayerIndex = gc.GetOtherPlayerIndex(playerIndex);
             ChessPiece piece = gc.Players[playerIndex].Pieces
-                .SingleOrDefault(p => p.CurrentLocation.Coordinate == "A8");
+                .SingleOrDefault(p => p.CurrentLocation.Coordinate == "A7");
             ChessPiece opponentPiece = gc.Players[otherPlayerIndex].Pieces
                 .SingleOrDefault(p => p.CurrentLocation.Coordinate == "B2");
             // Fake previous moved that places pieced in desired locations.
@@ -430,6 +432,29 @@ namespace ModelsTests
             Assert.IsTrue(isLegalMoveDiagonally);
         }
 
+        [Test]
+        public void IsLegalMoveDiagonally_IsFalse_Test_001()
+        {
+            // Arrange diagonal move by pawn with no capture
+            GameController gc = new GameController();
+
+            Location origin = gc.GetLocation("A7");
+            Location destination = gc.GetLocation("B6");
+            int playerIndex = 1;
+            int otherPlayerIndex = gc.GetOtherPlayerIndex(playerIndex);
+            ChessPiece piece = gc.Players[playerIndex].Pieces
+                .SingleOrDefault(p => p.CurrentLocation.Coordinate == "A7");
+            // Fake previous moved that places pieces in desired locations.
+            piece.CurrentLocation = origin;
+
+            // Act
+            bool isLegalMoveDiagonally =
+                MoveAssistant.IsLegalMoveDiagonally(
+                    gc.Players[playerIndex], gc.Players[otherPlayerIndex], origin, destination, 1, false);
+            Assert.IsFalse(isLegalMoveDiagonally);
+        }
+
+        // ToDo: Write tests to cover incremented and decremented columns & rows
 
         #endregion
 

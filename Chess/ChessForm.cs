@@ -123,7 +123,6 @@ namespace Chess
 
         private void btnWhiteMove_Click(object sender, EventArgs e)
         {
-            // ToDo: Handle this event
             Button btn = (Button)sender;
             btn.Enabled = false;
 

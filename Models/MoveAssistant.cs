@@ -151,22 +151,14 @@ namespace Models
             if (limit < 7 && maxSquaresForColumns > limit)
                 return false;
 
-            // ToDo: Set up row iteration logic and within each branch, set up column
-            // iteration logic and perform checks at intersection points
-
-            // Note: cannot simply loop rows within column loop or will get "false positives,"
-            // since each row will loop for a specific column in loop.
-            // Need to apply both dimensions' increment/decrement logic but only check 1 row
-            // for each column
-
             // Build two <int, int> seqNo & column or row number dictionaries, using the
             // increment/decrement logic of each dimension, then for each seqNo of ColumnDictionary
-            // form coordinate by concatenating column value and row value for same seqNo?
+            // form coordinate by concatenating column value and row value for same seqNo.
             Dictionary<int, int> columns = new Dictionary<int, int>(limit);
             Dictionary<int, int> rows = new Dictionary<int, int>(limit);
             
-            LoadColunnDictionary(originCol, destCol, isColIncremented, maxSquaresForColumns, columns);
-            LoadRowDictionary(originRow, destRow, isRowIncremented, maxSquaresForRows, rows);
+            columns = GetColunnDictionary(originCol, destCol, isColIncremented, maxSquaresForColumns, limit);
+            rows = GetRowDictionary(originRow, destRow, isRowIncremented, maxSquaresForRows, limit);
 
             // Both the dictionaries should have the same sequence numbers, 
             // since are on the same diagonal trajectory
@@ -196,13 +188,16 @@ namespace Models
 
         #region Helper Methods
         
-        private static void LoadColunnDictionary(int originCol, int destCol,
-            bool isColIncremented, int maxSquaresForColumns, Dictionary<int, int> columns)
+        // ToDo: Fix these dictionary methods, namely the for's limits
+        private static Dictionary<int, int> GetColunnDictionary(int originCol, 
+            int destCol, bool isColIncremented, int maxSquaresForColumns, int limit)
         {
             // Load ColumnDictionary with column numbers, in sequence
+            Dictionary<int, int> columns = new Dictionary<int, int>(limit);
+
             if (isColIncremented)
             {
-                for (int colNo = originCol + 1; colNo < (originCol + maxSquaresForColumns); colNo++)
+                for (int colNo = originCol + 1; colNo < (originCol + maxSquaresForColumns + 1); colNo++)
                 {
                     columns.Add(colNo, colNo);
                 }
@@ -210,18 +205,22 @@ namespace Models
             else
             {
                 int seqNo = 0;
-                for (int colNo = originCol - 1; colNo > destCol + 1; colNo--)
+                for (int colNo = originCol - 1; colNo > destCol; colNo--)
                 {
                     seqNo++;
                     columns.Add(seqNo, colNo);
                 }
             }
+
+            return columns;
         }
 
-        private static void LoadRowDictionary(int originRow, int destRow, 
-            bool isRowIncremented, int maxSquaresForRows, Dictionary<int, int> rows)
+        private static Dictionary<int, int> GetRowDictionary(int originRow, int destRow, 
+            bool isRowIncremented, int maxSquaresForRows, int limit)
         {
             //Load RowDictionary with row numbers, in sequence.
+            Dictionary<int, int> rows = new Dictionary<int, int>(limit);
+
             if (isRowIncremented)
             {
                 for (int rowNo = originRow; rowNo < (originRow + maxSquaresForRows); rowNo++)
@@ -238,6 +237,8 @@ namespace Models
                     rows.Add(seqNo, rowNo);
                 }
             }
+
+            return rows;
         }
 
         private static bool IsOccupied(Player player, Player opponent, string coordinate)
