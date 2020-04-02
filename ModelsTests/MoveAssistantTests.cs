@@ -435,7 +435,7 @@ namespace ModelsTests
         [Test]
         public void IsLegalMoveDiagonally_IsFalse_Test_001()
         {
-            // Arrange diagonal move by pawn with no capture
+            // Arrange diagonal move  where occupied by own
             GameController gc = new GameController();
 
             Location origin = gc.GetLocation("A7");
@@ -444,8 +444,11 @@ namespace ModelsTests
             int otherPlayerIndex = gc.GetOtherPlayerIndex(playerIndex);
             ChessPiece piece = gc.Players[playerIndex].Pieces
                 .SingleOrDefault(p => p.CurrentLocation.Coordinate == "A7");
+            ChessPiece otherPiece = gc.Players[playerIndex].Pieces
+                .SingleOrDefault(p => p.CurrentLocation.Coordinate == "B7");
             // Fake previous moved that places pieces in desired locations.
             piece.CurrentLocation = origin;
+            otherPiece.CurrentLocation = destination;
 
             // Act
             bool isLegalMoveDiagonally =
@@ -453,8 +456,6 @@ namespace ModelsTests
                     gc.Players[playerIndex], gc.Players[otherPlayerIndex], origin, destination, 1, false);
             Assert.IsFalse(isLegalMoveDiagonally);
         }
-
-        // ToDo: Write tests to cover incremented and decremented columns & rows
 
         #endregion
 

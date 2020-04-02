@@ -185,27 +185,34 @@ namespace Models
                                 == destination.Coordinate);
         }
 
+        public static bool IsCapture(Player opponent, string coordinate)
+        {
+            return opponent.Pieces
+                              .Exists(
+                                x => x.CurrentLocation.Coordinate
+                                == coordinate);
+        }
 
         #region Helper Methods
-        
-        // ToDo: Fix these dictionary methods, namely the for's limits
+
         private static Dictionary<int, int> GetColunnDictionary(int originCol, 
             int destCol, bool isColIncremented, int maxSquaresForColumns, int limit)
         {
-            // Load ColumnDictionary with column numbers, in sequence
+            // Load ColumnDictionary with column numbers moved to, in sequence
             Dictionary<int, int> columns = new Dictionary<int, int>(limit);
+            int seqNo = 0;
 
             if (isColIncremented)
             {
                 for (int colNo = originCol + 1; colNo < (originCol + maxSquaresForColumns + 1); colNo++)
                 {
-                    columns.Add(colNo, colNo);
+                    seqNo++;
+                    columns.Add(seqNo, colNo);
                 }
             }
             else
             {
-                int seqNo = 0;
-                for (int colNo = originCol - 1; colNo > destCol; colNo--)
+                for (int colNo = originCol - 1; colNo > destCol - 1; colNo--)
                 {
                     seqNo++;
                     columns.Add(seqNo, colNo);
@@ -218,20 +225,21 @@ namespace Models
         private static Dictionary<int, int> GetRowDictionary(int originRow, int destRow, 
             bool isRowIncremented, int maxSquaresForRows, int limit)
         {
-            //Load RowDictionary with row numbers, in sequence.
+            //Load RowDictionary with row numbers moved to, in sequence.
             Dictionary<int, int> rows = new Dictionary<int, int>(limit);
+            int seqNo = 0;
 
             if (isRowIncremented)
             {
-                for (int rowNo = originRow; rowNo < (originRow + maxSquaresForRows); rowNo++)
+                for (int rowNo = originRow + 1; rowNo < (originRow + maxSquaresForRows + 1); rowNo++)
                 {
+                    seqNo++;
                     rows.Add(rowNo, rowNo);
                 }
             }
             else
             {
-                int seqNo = 0;
-                for (int rowNo = originRow - 1; rowNo > destRow + 1; rowNo--)
+                for (int rowNo = originRow - 1; rowNo > destRow - 1; rowNo--)
                 {
                     seqNo++;
                     rows.Add(seqNo, rowNo);
@@ -248,7 +256,8 @@ namespace Models
             var isOpponentOccupied = opponent.Pieces
                 .Exists(p => p.CurrentLocation.Coordinate == coordinate);
 
-            if (isPlayerOccupied || isOpponentOccupied)
+            if (isPlayerOccupied 
+                || (isOpponentOccupied && !IsCapture(opponent, coordinate)))
                 return true;
             else
                 return false;
