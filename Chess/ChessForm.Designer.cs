@@ -1198,11 +1198,11 @@ namespace Chess
             // 
             this.lblWhitePlayer.AutoSize = true;
             this.lblWhitePlayer.BackColor = System.Drawing.Color.BurlyWood;
-            this.lblWhitePlayer.Location = new System.Drawing.Point(10, 30);
+            this.lblWhitePlayer.Location = new System.Drawing.Point(53, 30);
             this.lblWhitePlayer.Name = "lblWhitePlayer";
-            this.lblWhitePlayer.Size = new System.Drawing.Size(172, 26);
+            this.lblWhitePlayer.Size = new System.Drawing.Size(127, 26);
             this.lblWhitePlayer.TabIndex = 96;
-            this.lblWhitePlayer.Text = "Opponent Move ";
+            this.lblWhitePlayer.Text = "White Move";
             // 
             // txtWhiteFrom
             // 

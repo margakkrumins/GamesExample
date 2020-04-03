@@ -162,8 +162,8 @@ namespace Chess
             int otherPlayerIndex = GetOtherPlayerIndex(playerIndex);
 
             Player player = Players[playerIndex];
-            Player opponent = Players[otherPlayerIndex];            
-            ChessPiece piece = player.Pieces
+            Player opponent = Players[otherPlayerIndex];
+            ChessPiece piece = Players[playerIndex].Pieces
                 .SingleOrDefault(p => p.CurrentLocation.Coordinate == origin.Coordinate);
 
             if (DidMovePiece(player, opponent, origin, destination, piece))
@@ -182,7 +182,8 @@ namespace Chess
                 piece.PreviousLocation = piece.CurrentLocation;
                 piece.CurrentLocation = destination;
 
-                message = $"Moved {piece.Text} from {piece.PreviousLocation} to {piece.CurrentLocation}";
+                message = $"Moved {piece.Text} from {piece.PreviousLocation.Coordinate} to {piece.CurrentLocation.Coordinate}";
+                return true;
             }
             else
             {

@@ -125,6 +125,7 @@ namespace Chess
         {
             Button btn = (Button)sender;
             btn.Enabled = false;
+            int white = 1;
 
             // Get white player's piece's from and to locations
             Location origin = Game.GetLocation(txtWhiteFrom.Text);
@@ -132,16 +133,22 @@ namespace Chess
 
             //Try to execute the move
             string message = string.Empty;
-            bool didExecuteMove = Game.DidExecuteMove(1, origin, destination, out message);
+            bool didExecuteMove = Game.DidExecuteMove(white, origin, destination, out message);
 
             if (didExecuteMove)
             {
-                //ToDo: Get value of text at origin control, 
-                    //assign its value to destination control
-                    //Set value of origin control to string.empty
+                TextBox originTextbox = FindControl(this, origin.Coordinate) as TextBox;
+                TextBox destinationTextbox = FindControl(this, destination.Coordinate) as TextBox;
 
+                destinationTextbox.Text = originTextbox.Text;
+                // "Changing" backcolor allows forecolor of readonly textbox to be changed
+                destinationTextbox.BackColor = destinationTextbox.BackColor;    
+                destinationTextbox.ForeColor = Game.Players[white].PlayerColor;
+                originTextbox.Text = string.Empty;
 
                 //ToDo: Update UI labels, textboxes, and buttons
+                lblMessage.Text = message;
+
             }
             else
             {
