@@ -9,6 +9,7 @@ namespace Models
         public string Name { get; set; }
         public Color PlayerColor { get; set; }
         public List<ChessPiece> Pieces { get; set; }
+        public List <ChessPiece> CapturedPieces { get; set; }
 
         public Player()
         {
@@ -17,7 +18,7 @@ namespace Models
         public Player(string name, Color playerColor)
         {
             Name = name;
-            PlayerColor = playerColor;
+            PlayerColor = playerColor;             
         }  
         
         public bool DidMovePiece(ChessPiece piece, Location destination)

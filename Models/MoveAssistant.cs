@@ -72,7 +72,7 @@ namespace Models
             if (canRetreat == false && isRowIncremented == false && player.PlayerColor == Color.Black)
                 return false;
 
-            if (canRetreat == false && isRowIncremented == true && canRetreat == false && player.PlayerColor == Color.BurlyWood)
+            if (canRetreat == false && isRowIncremented == true && player.PlayerColor == Color.BurlyWood)
                 return false;
 
             int maxSquares = CalculateMaxSquares(originRow, destRow, isRowIncremented);
@@ -88,7 +88,7 @@ namespace Models
             if (isRowIncremented)
             {
                 //Check all the rows traversed, except for origin and destination
-                for (int i = originRow; i < (originRow + maxSquares); i++)
+                for (int i = originRow + 1; i < (originRow + maxSquares); i++)
                 {
                     string currentCoord = $"{letter}{i}";
 
@@ -180,17 +180,13 @@ namespace Models
         public static bool IsCapture(Player opponent, Location destination)
         {
             return opponent.Pieces
-                              .Exists(
-                                x => x.CurrentLocation.Coordinate
-                                == destination.Coordinate);
+                           .Exists(x => x.CurrentLocation.Coordinate == destination.Coordinate);
         }
 
         public static bool IsCapture(Player opponent, string coordinate)
         {
             return opponent.Pieces
-                              .Exists(
-                                x => x.CurrentLocation.Coordinate
-                                == coordinate);
+                           .Exists(x => x.CurrentLocation.Coordinate == coordinate);
         }
 
         #region Helper Methods
@@ -234,7 +230,7 @@ namespace Models
                 for (int rowNo = originRow + 1; rowNo < (originRow + maxSquaresForRows + 1); rowNo++)
                 {
                     seqNo++;
-                    rows.Add(rowNo, rowNo);
+                    rows.Add(seqNo, rowNo);
                 }
             }
             else
@@ -256,8 +252,7 @@ namespace Models
             var isOpponentOccupied = opponent.Pieces
                 .Exists(p => p.CurrentLocation.Coordinate == coordinate);
 
-            if (isPlayerOccupied 
-                || (isOpponentOccupied && !IsCapture(opponent, coordinate)))
+            if (isPlayerOccupied || (isOpponentOccupied && !IsCapture(opponent, coordinate)))
                 return true;
             else
                 return false;

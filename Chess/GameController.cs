@@ -177,6 +177,11 @@ namespace Chess
                     capturedPiece.PreviousLocation = capturedPiece.CurrentLocation;
                     capturedPiece.CurrentLocation = null;
                     capturedPiece.IsCaptured = true;
+
+                    if (player.CapturedPieces == null)
+                        player.CapturedPieces = new List<ChessPiece>();
+                    player.CapturedPieces.Add(capturedPiece);
+                    opponent.Pieces.Remove(capturedPiece);
                 }
 
                 piece.PreviousLocation = piece.CurrentLocation;

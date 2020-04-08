@@ -8,6 +8,7 @@ namespace ModelsTests
 {   
     public class Tests
     {
+        // ToDo: Check failing tests when (may wait until all pieces can move)
         // ToDo: Add more tests, especially for edge cases.
         // ToDo: Arrange tests without dependencies, but for now, limiting testing
         // to tests within context of how board is set up.

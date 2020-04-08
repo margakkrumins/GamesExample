@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Text;
 using Models;
 
 namespace Chess
@@ -21,8 +22,10 @@ namespace Chess
 
         private void GameBoard_Load(object sender, EventArgs e)
         {
-           // Clear all textboxes.
-           ClearTextboxes();
+            // Clear all textboxes.
+            ClearTextboxes();
+            grpBlack.Visible = false;
+            grpBlack.Enabled = false;
 
             // Set up the pieces in the textboxes for each player
             for (int i = 0; i < Game.Players.Count; i++)
@@ -33,7 +36,7 @@ namespace Chess
                     {
                         TextBox tbx = FindControl(this, piece.CurrentLocation.Coordinate) as TextBox;
                         tbx.Text = piece.Text;
-                        SetBackcolor(tbx);
+                        SetBackcolorOfBoard(tbx);
                         tbx.ForeColor = Game.Players[i].PlayerColor;
                         tbx.ReadOnly = true;
                     }
@@ -41,6 +44,107 @@ namespace Chess
             }            
         }
 
+        private void btnWhiteMove_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.Enabled = false;
+            int white = 1;
+
+            // Get white player's piece's from and to locations
+            Location origin = Game.GetLocation(txtWhiteFrom.Text);
+            Location destination = Game.GetLocation(txtWhiteDestination.Text);
+
+            //Try to execute the move
+            string message = string.Empty;
+            bool didExecuteMove = Game.DidExecuteMove(white, origin, destination, out message);
+
+            if (didExecuteMove)
+            {
+                UpdateBoard(white, origin, destination, message);
+                UpdateCaptures(white, "lblWhiteCaptures");
+
+                grpWhite.Visible = false;
+                grpWhite.Enabled = false;
+                grpBlack.Visible = true;
+                grpBlack.Enabled = true;
+                btnBlackMove.Enabled = true;
+            }
+            else
+            {
+                btn.Enabled = true;
+                lblMessage.ForeColor = Color.Red;
+                lblMessage.Text = message;
+            }
+        }
+
+        private void btnBlackMove_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.Enabled = false;
+            int black = 0;
+
+            // Get black player's piece's from and to locations
+            Location origin = Game.GetLocation(txtBlackFrom.Text);
+            Location destination = Game.GetLocation(txtBlackDestination.Text);
+
+            //Try to execute the move
+            string message = string.Empty;
+            bool didExecuteMove = Game.DidExecuteMove(black, origin, destination, out message);
+
+            if (didExecuteMove)
+            {
+                UpdateBoard(black, origin, destination, message);
+                UpdateCaptures(black, "lblBlackCaptures");
+
+                grpBlack.Visible = false;
+                grpBlack.Enabled = false;
+                grpWhite.Visible = true;
+                grpWhite.Enabled = true;
+                btnWhiteMove.Enabled = true;
+            }
+            else
+            {
+                btn.Enabled = true;
+                lblMessage.ForeColor = Color.Red;
+                lblMessage.Text = message;
+            }
+        }
+
+        private void UpdateBoard(int playerIndex, Location origin, Location destination, string message)
+        {
+            TextBox originTextbox = FindControl(this, origin.Coordinate) as TextBox;
+            TextBox destinationTextbox = FindControl(this, destination.Coordinate) as TextBox;
+
+            destinationTextbox.Text = originTextbox.Text;
+            // "Changing" backcolor allows forecolor of readonly textbox to be changed
+            destinationTextbox.BackColor = destinationTextbox.BackColor;
+            destinationTextbox.ForeColor = Game.Players[playerIndex].PlayerColor;
+            originTextbox.Text = string.Empty;
+
+            lblMessage.ForeColor = Color.Black;
+            lblMessage.Text = message;
+        }
+
+        private void UpdateCaptures(int playerIndex, string labelName)
+        {
+            StringBuilder sb = new StringBuilder();
+            int index = 0;
+
+            if (Game.Players[playerIndex].CapturedPieces != null)
+            {
+                foreach (var capturedPiece in Game.Players[playerIndex].CapturedPieces)
+                {
+                    sb.Append($"{capturedPiece.Text} ");
+                    if (index == 8)
+                        sb.Append(Environment.NewLine);
+                    index++;
+                }
+
+                Label capturesLabel = FindControl(this, labelName) as Label;
+                capturesLabel.Text = sb.ToString();
+            }        
+        }
+        
         private void ClearTextboxes()
         {
             foreach (var ctrl in Controls)
@@ -49,14 +153,17 @@ namespace Chess
                 {
                     TextBox tbx = ctrl as TextBox;
                     tbx.Text = string.Empty;
-                    SetBackcolor(tbx);
+                    SetBackcolorOfBoard(tbx);
                     tbx.ForeColor = Color.Black;
                     tbx.ReadOnly = false;
                 }
             }
         }
-        
-        // Recursively find the named control.
+
+        /// <summary>Finds the control recursively.</summary>
+        /// <param name="parent">The parent.</param>
+        /// <param name="name">The name.</param>
+        /// <returns>The Control</returns>
         private Control FindControl(Control parent, string name)
         {
             // Check the parent.
@@ -73,7 +180,7 @@ namespace Chess
             return null;
         }
 
-        private void SetBackcolor(TextBox tbx)
+        private void SetBackcolorOfBoard(TextBox tbx)
         {
             if (tbx.Name.Length > 2)
                 return;
@@ -84,11 +191,6 @@ namespace Chess
                 tbx.BackColor = DefaultBackColor;
         }
 
-        /// <summary>
-        /// Checks if name indicates item is in an even row.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns>True, if it is; else, false</returns>
         private bool IsInEvenRow(string name)
         {
             int rowPart = int.Parse(name.Substring(1, 1));
@@ -119,42 +221,6 @@ namespace Chess
 
             // If we got here, doesn't meet any of the criteria.
             return false;
-        }
-
-        private void btnWhiteMove_Click(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-            btn.Enabled = false;
-            int white = 1;
-
-            // Get white player's piece's from and to locations
-            Location origin = Game.GetLocation(txtWhiteFrom.Text);
-            Location destination = Game.GetLocation(txtWhiteDestination.Text);
-
-            //Try to execute the move
-            string message = string.Empty;
-            bool didExecuteMove = Game.DidExecuteMove(white, origin, destination, out message);
-
-            if (didExecuteMove)
-            {
-                TextBox originTextbox = FindControl(this, origin.Coordinate) as TextBox;
-                TextBox destinationTextbox = FindControl(this, destination.Coordinate) as TextBox;
-
-                destinationTextbox.Text = originTextbox.Text;
-                // "Changing" backcolor allows forecolor of readonly textbox to be changed
-                destinationTextbox.BackColor = destinationTextbox.BackColor;    
-                destinationTextbox.ForeColor = Game.Players[white].PlayerColor;
-                originTextbox.Text = string.Empty;
-
-                //ToDo: Update UI labels, textboxes, and buttons
-                lblMessage.Text = message;
-
-            }
-            else
-            {
-                lblMessage.Text = message;
-            }
-
         }
     }
 }

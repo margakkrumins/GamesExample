@@ -115,11 +115,20 @@ namespace Chess
             this.txtWhiteDestination = new System.Windows.Forms.TextBox();
             this.btnWhiteMove = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.lblWhite = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grpWhite = new System.Windows.Forms.GroupBox();
+            this.grpBlack = new System.Windows.Forms.GroupBox();
+            this.lblBlackPlayer = new System.Windows.Forms.Label();
+            this.txtBlackFrom = new System.Windows.Forms.TextBox();
+            this.lblBlack = new System.Windows.Forms.Label();
+            this.txtBlackDestination = new System.Windows.Forms.TextBox();
+            this.btnBlackMove = new System.Windows.Forms.Button();
+            this.lblBlackCaptures = new System.Windows.Forms.Label();
+            this.lblWhiteCaptures = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grpWhite.SuspendLayout();
+            this.grpBlack.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -1197,7 +1206,8 @@ namespace Chess
             // lblWhitePlayer
             // 
             this.lblWhitePlayer.AutoSize = true;
-            this.lblWhitePlayer.BackColor = System.Drawing.Color.BurlyWood;
+            this.lblWhitePlayer.BackColor = System.Drawing.Color.Transparent;
+            this.lblWhitePlayer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblWhitePlayer.Location = new System.Drawing.Point(53, 30);
             this.lblWhitePlayer.Name = "lblWhitePlayer";
             this.lblWhitePlayer.Size = new System.Drawing.Size(127, 26);
@@ -1223,7 +1233,7 @@ namespace Chess
             // btnWhiteMove
             // 
             this.btnWhiteMove.BackColor = System.Drawing.Color.White;
-            this.btnWhiteMove.Location = new System.Drawing.Point(319, 27);
+            this.btnWhiteMove.Location = new System.Drawing.Point(319, 24);
             this.btnWhiteMove.Name = "btnWhiteMove";
             this.btnWhiteMove.Size = new System.Drawing.Size(74, 32);
             this.btnWhiteMove.TabIndex = 100;
@@ -1234,20 +1244,19 @@ namespace Chess
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(464, 87);
+            this.lblMessage.Location = new System.Drawing.Point(469, 250);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(201, 26);
+            this.lblMessage.Size = new System.Drawing.Size(0, 26);
             this.lblMessage.TabIndex = 101;
-            this.lblMessage.Text = "Nothing to see here";
             // 
-            // label18
+            // lblWhite
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(228, 30);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(30, 26);
-            this.label18.TabIndex = 102;
-            this.label18.Text = "to";
+            this.lblWhite.AutoSize = true;
+            this.lblWhite.Location = new System.Drawing.Point(233, 30);
+            this.lblWhite.Name = "lblWhite";
+            this.lblWhite.Size = new System.Drawing.Size(30, 26);
+            this.lblWhite.TabIndex = 102;
+            this.lblWhite.Text = "to";
             // 
             // groupBox1
             // 
@@ -1332,32 +1341,112 @@ namespace Chess
             this.groupBox1.Controls.Add(this.H4);
             this.groupBox1.Controls.Add(this.F4);
             this.groupBox1.Controls.Add(this.G4);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 89);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(426, 401);
             this.groupBox1.TabIndex = 103;
             this.groupBox1.TabStop = false;
             // 
-            // groupBox2
+            // grpWhite
             // 
-            this.groupBox2.Controls.Add(this.lblWhitePlayer);
-            this.groupBox2.Controls.Add(this.txtWhiteFrom);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.txtWhiteDestination);
-            this.groupBox2.Controls.Add(this.btnWhiteMove);
-            this.groupBox2.Location = new System.Drawing.Point(12, 419);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(426, 76);
-            this.groupBox2.TabIndex = 104;
-            this.groupBox2.TabStop = false;
+            this.grpWhite.Controls.Add(this.lblWhitePlayer);
+            this.grpWhite.Controls.Add(this.txtWhiteFrom);
+            this.grpWhite.Controls.Add(this.lblWhite);
+            this.grpWhite.Controls.Add(this.txtWhiteDestination);
+            this.grpWhite.Controls.Add(this.btnWhiteMove);
+            this.grpWhite.Location = new System.Drawing.Point(12, 492);
+            this.grpWhite.Name = "grpWhite";
+            this.grpWhite.Size = new System.Drawing.Size(426, 76);
+            this.grpWhite.TabIndex = 104;
+            this.grpWhite.TabStop = false;
+            // 
+            // grpBlack
+            // 
+            this.grpBlack.Controls.Add(this.lblBlackPlayer);
+            this.grpBlack.Controls.Add(this.txtBlackFrom);
+            this.grpBlack.Controls.Add(this.lblBlack);
+            this.grpBlack.Controls.Add(this.txtBlackDestination);
+            this.grpBlack.Controls.Add(this.btnBlackMove);
+            this.grpBlack.Location = new System.Drawing.Point(12, 7);
+            this.grpBlack.Name = "grpBlack";
+            this.grpBlack.Size = new System.Drawing.Size(426, 76);
+            this.grpBlack.TabIndex = 105;
+            this.grpBlack.TabStop = false;
+            // 
+            // lblBlackPlayer
+            // 
+            this.lblBlackPlayer.AutoSize = true;
+            this.lblBlackPlayer.BackColor = System.Drawing.Color.Transparent;
+            this.lblBlackPlayer.Location = new System.Drawing.Point(53, 30);
+            this.lblBlackPlayer.Name = "lblBlackPlayer";
+            this.lblBlackPlayer.Size = new System.Drawing.Size(125, 26);
+            this.lblBlackPlayer.TabIndex = 96;
+            this.lblBlackPlayer.Text = "Black Move";
+            // 
+            // txtBlackFrom
+            // 
+            this.txtBlackFrom.Location = new System.Drawing.Point(189, 27);
+            this.txtBlackFrom.Name = "txtBlackFrom";
+            this.txtBlackFrom.Size = new System.Drawing.Size(36, 32);
+            this.txtBlackFrom.TabIndex = 97;
+            this.txtBlackFrom.Text = "D2";
+            // 
+            // lblBlack
+            // 
+            this.lblBlack.AutoSize = true;
+            this.lblBlack.Location = new System.Drawing.Point(232, 30);
+            this.lblBlack.Name = "lblBlack";
+            this.lblBlack.Size = new System.Drawing.Size(30, 26);
+            this.lblBlack.TabIndex = 102;
+            this.lblBlack.Text = "to";
+            // 
+            // txtBlackDestination
+            // 
+            this.txtBlackDestination.Location = new System.Drawing.Point(262, 27);
+            this.txtBlackDestination.Name = "txtBlackDestination";
+            this.txtBlackDestination.Size = new System.Drawing.Size(36, 32);
+            this.txtBlackDestination.TabIndex = 99;
+            this.txtBlackDestination.Text = "D4";
+            // 
+            // btnBlackMove
+            // 
+            this.btnBlackMove.BackColor = System.Drawing.Color.White;
+            this.btnBlackMove.Location = new System.Drawing.Point(319, 24);
+            this.btnBlackMove.Name = "btnBlackMove";
+            this.btnBlackMove.Size = new System.Drawing.Size(74, 32);
+            this.btnBlackMove.TabIndex = 100;
+            this.btnBlackMove.Text = "Move";
+            this.btnBlackMove.UseVisualStyleBackColor = false;
+            this.btnBlackMove.Click += new System.EventHandler(this.btnBlackMove_Click);
+            // 
+            // lblBlackCaptures
+            // 
+            this.lblBlackCaptures.AutoSize = true;
+            this.lblBlackCaptures.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblBlackCaptures.Location = new System.Drawing.Point(459, 22);
+            this.lblBlackCaptures.Name = "lblBlackCaptures";
+            this.lblBlackCaptures.Size = new System.Drawing.Size(0, 26);
+            this.lblBlackCaptures.TabIndex = 106;
+            // 
+            // lblWhiteCaptures
+            // 
+            this.lblWhiteCaptures.AutoSize = true;
+            this.lblWhiteCaptures.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblWhiteCaptures.Location = new System.Drawing.Point(459, 492);
+            this.lblWhiteCaptures.Name = "lblWhiteCaptures";
+            this.lblWhiteCaptures.Size = new System.Drawing.Size(0, 26);
+            this.lblWhiteCaptures.TabIndex = 107;
             // 
             // ChessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SandyBrown;
-            this.ClientSize = new System.Drawing.Size(725, 530);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(922, 584);
+            this.Controls.Add(this.lblWhiteCaptures);
+            this.Controls.Add(this.lblBlackCaptures);
+            this.Controls.Add(this.grpBlack);
+            this.Controls.Add(this.grpWhite);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblMessage);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1368,8 +1457,10 @@ namespace Chess
             this.Load += new System.EventHandler(this.GameBoard_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grpWhite.ResumeLayout(false);
+            this.grpWhite.PerformLayout();
+            this.grpBlack.ResumeLayout(false);
+            this.grpBlack.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1467,9 +1558,17 @@ namespace Chess
         private System.Windows.Forms.TextBox txtWhiteDestination;
         private System.Windows.Forms.Button btnWhiteMove;
         private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lblWhite;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpWhite;
+        private System.Windows.Forms.GroupBox grpBlack;
+        private System.Windows.Forms.Label lblBlackPlayer;
+        private System.Windows.Forms.TextBox txtBlackFrom;
+        private System.Windows.Forms.Label lblBlack;
+        private System.Windows.Forms.TextBox txtBlackDestination;
+        private System.Windows.Forms.Button btnBlackMove;
+        private System.Windows.Forms.Label lblBlackCaptures;
+        private System.Windows.Forms.Label lblWhiteCaptures;
     }
 }
 
