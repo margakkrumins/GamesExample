@@ -116,7 +116,7 @@ namespace Chess
             this.btnWhiteMove = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
             this.lblWhite = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpBoard = new System.Windows.Forms.GroupBox();
             this.grpWhite = new System.Windows.Forms.GroupBox();
             this.grpBlack = new System.Windows.Forms.GroupBox();
             this.lblBlackPlayer = new System.Windows.Forms.Label();
@@ -126,7 +126,8 @@ namespace Chess
             this.btnBlackMove = new System.Windows.Forms.Button();
             this.lblBlackCaptures = new System.Windows.Forms.Label();
             this.lblWhiteCaptures = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.grpBoard.SuspendLayout();
             this.grpWhite.SuspendLayout();
             this.grpBlack.SuspendLayout();
             this.SuspendLayout();
@@ -137,7 +138,7 @@ namespace Chess
             this.label1.Location = new System.Drawing.Point(53, 33);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(27, 26);
+            this.label1.Size = new System.Drawing.Size(17, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "A";
             // 
@@ -147,7 +148,7 @@ namespace Chess
             this.label2.Location = new System.Drawing.Point(361, 33);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 26);
+            this.label2.Size = new System.Drawing.Size(19, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "H";
             // 
@@ -157,7 +158,7 @@ namespace Chess
             this.label3.Location = new System.Drawing.Point(317, 33);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 26);
+            this.label3.Size = new System.Drawing.Size(20, 18);
             this.label3.TabIndex = 2;
             this.label3.Text = "G";
             // 
@@ -167,7 +168,7 @@ namespace Chess
             this.label4.Location = new System.Drawing.Point(273, 33);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(25, 26);
+            this.label4.Size = new System.Drawing.Size(17, 18);
             this.label4.TabIndex = 3;
             this.label4.Text = "F";
             // 
@@ -177,7 +178,7 @@ namespace Chess
             this.label5.Location = new System.Drawing.Point(229, 33);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(27, 26);
+            this.label5.Size = new System.Drawing.Size(18, 18);
             this.label5.TabIndex = 4;
             this.label5.Text = "E";
             // 
@@ -187,7 +188,7 @@ namespace Chess
             this.label6.Location = new System.Drawing.Point(185, 33);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 26);
+            this.label6.Size = new System.Drawing.Size(19, 18);
             this.label6.TabIndex = 5;
             this.label6.Text = "D";
             // 
@@ -197,7 +198,7 @@ namespace Chess
             this.label7.Location = new System.Drawing.Point(141, 33);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 26);
+            this.label7.Size = new System.Drawing.Size(19, 18);
             this.label7.TabIndex = 6;
             this.label7.Text = "C";
             // 
@@ -207,7 +208,7 @@ namespace Chess
             this.label8.Location = new System.Drawing.Point(97, 33);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 26);
+            this.label8.Size = new System.Drawing.Size(18, 18);
             this.label8.TabIndex = 7;
             this.label8.Text = "B";
             // 
@@ -217,7 +218,7 @@ namespace Chess
             this.label9.Location = new System.Drawing.Point(17, 355);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(24, 26);
+            this.label9.Size = new System.Drawing.Size(16, 18);
             this.label9.TabIndex = 8;
             this.label9.Text = "8";
             // 
@@ -227,7 +228,7 @@ namespace Chess
             this.label10.Location = new System.Drawing.Point(17, 315);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(24, 26);
+            this.label10.Size = new System.Drawing.Size(16, 18);
             this.label10.TabIndex = 9;
             this.label10.Text = "7";
             // 
@@ -237,7 +238,7 @@ namespace Chess
             this.label11.Location = new System.Drawing.Point(17, 275);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(24, 26);
+            this.label11.Size = new System.Drawing.Size(16, 18);
             this.label11.TabIndex = 10;
             this.label11.Text = "6";
             // 
@@ -247,7 +248,7 @@ namespace Chess
             this.label12.Location = new System.Drawing.Point(17, 235);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(24, 26);
+            this.label12.Size = new System.Drawing.Size(16, 18);
             this.label12.TabIndex = 11;
             this.label12.Text = "5";
             // 
@@ -257,7 +258,7 @@ namespace Chess
             this.label13.Location = new System.Drawing.Point(17, 195);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(24, 26);
+            this.label13.Size = new System.Drawing.Size(16, 18);
             this.label13.TabIndex = 12;
             this.label13.Text = "4";
             // 
@@ -267,7 +268,7 @@ namespace Chess
             this.label14.Location = new System.Drawing.Point(17, 155);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(24, 26);
+            this.label14.Size = new System.Drawing.Size(16, 18);
             this.label14.TabIndex = 13;
             this.label14.Text = "3";
             // 
@@ -277,7 +278,7 @@ namespace Chess
             this.label15.Location = new System.Drawing.Point(17, 75);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(24, 26);
+            this.label15.Size = new System.Drawing.Size(16, 18);
             this.label15.TabIndex = 14;
             this.label15.Text = "1";
             // 
@@ -287,7 +288,7 @@ namespace Chess
             this.label16.Location = new System.Drawing.Point(17, 115);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(24, 26);
+            this.label16.Size = new System.Drawing.Size(16, 18);
             this.label16.TabIndex = 15;
             this.label16.Text = "2";
             // 
@@ -300,7 +301,7 @@ namespace Chess
             this.A1.MinimumSize = new System.Drawing.Size(36, 26);
             this.A1.Name = "A1";
             this.A1.ReadOnly = true;
-            this.A1.Size = new System.Drawing.Size(36, 32);
+            this.A1.Size = new System.Drawing.Size(36, 24);
             this.A1.TabIndex = 16;
             this.A1.Text = "R";
             this.A1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -315,7 +316,7 @@ namespace Chess
             this.B1.MinimumSize = new System.Drawing.Size(36, 26);
             this.B1.Name = "B1";
             this.B1.ReadOnly = true;
-            this.B1.Size = new System.Drawing.Size(36, 32);
+            this.B1.Size = new System.Drawing.Size(36, 24);
             this.B1.TabIndex = 17;
             this.B1.Text = "Kn";
             this.B1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -330,7 +331,7 @@ namespace Chess
             this.H1.MinimumSize = new System.Drawing.Size(36, 26);
             this.H1.Name = "H1";
             this.H1.ReadOnly = true;
-            this.H1.Size = new System.Drawing.Size(36, 32);
+            this.H1.Size = new System.Drawing.Size(36, 24);
             this.H1.TabIndex = 18;
             this.H1.Text = "Kn";
             this.H1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -344,7 +345,7 @@ namespace Chess
             this.G1.MinimumSize = new System.Drawing.Size(36, 26);
             this.G1.Name = "G1";
             this.G1.ReadOnly = true;
-            this.G1.Size = new System.Drawing.Size(36, 32);
+            this.G1.Size = new System.Drawing.Size(36, 24);
             this.G1.TabIndex = 19;
             this.G1.Text = "Kn";
             this.G1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -359,7 +360,7 @@ namespace Chess
             this.F1.MinimumSize = new System.Drawing.Size(36, 26);
             this.F1.Name = "F1";
             this.F1.ReadOnly = true;
-            this.F1.Size = new System.Drawing.Size(36, 32);
+            this.F1.Size = new System.Drawing.Size(36, 24);
             this.F1.TabIndex = 20;
             this.F1.Text = "B";
             this.F1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -373,7 +374,7 @@ namespace Chess
             this.E1.MinimumSize = new System.Drawing.Size(36, 26);
             this.E1.Name = "E1";
             this.E1.ReadOnly = true;
-            this.E1.Size = new System.Drawing.Size(36, 32);
+            this.E1.Size = new System.Drawing.Size(36, 24);
             this.E1.TabIndex = 21;
             this.E1.Text = "K";
             this.E1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -388,7 +389,7 @@ namespace Chess
             this.D1.MinimumSize = new System.Drawing.Size(36, 26);
             this.D1.Name = "D1";
             this.D1.ReadOnly = true;
-            this.D1.Size = new System.Drawing.Size(36, 32);
+            this.D1.Size = new System.Drawing.Size(36, 24);
             this.D1.TabIndex = 22;
             this.D1.Text = "Q";
             this.D1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -402,7 +403,7 @@ namespace Chess
             this.C1.MinimumSize = new System.Drawing.Size(36, 26);
             this.C1.Name = "C1";
             this.C1.ReadOnly = true;
-            this.C1.Size = new System.Drawing.Size(36, 32);
+            this.C1.Size = new System.Drawing.Size(36, 24);
             this.C1.TabIndex = 23;
             this.C1.Text = "B";
             this.C1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -417,7 +418,7 @@ namespace Chess
             this.C2.MinimumSize = new System.Drawing.Size(36, 26);
             this.C2.Name = "C2";
             this.C2.ReadOnly = true;
-            this.C2.Size = new System.Drawing.Size(36, 32);
+            this.C2.Size = new System.Drawing.Size(36, 24);
             this.C2.TabIndex = 31;
             this.C2.Text = "P";
             this.C2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -431,7 +432,7 @@ namespace Chess
             this.D2.MinimumSize = new System.Drawing.Size(36, 26);
             this.D2.Name = "D2";
             this.D2.ReadOnly = true;
-            this.D2.Size = new System.Drawing.Size(36, 32);
+            this.D2.Size = new System.Drawing.Size(36, 24);
             this.D2.TabIndex = 30;
             this.D2.Text = "P";
             this.D2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -446,7 +447,7 @@ namespace Chess
             this.E2.MinimumSize = new System.Drawing.Size(36, 26);
             this.E2.Name = "E2";
             this.E2.ReadOnly = true;
-            this.E2.Size = new System.Drawing.Size(36, 32);
+            this.E2.Size = new System.Drawing.Size(36, 24);
             this.E2.TabIndex = 29;
             this.E2.Text = "P";
             this.E2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -460,7 +461,7 @@ namespace Chess
             this.F2.MinimumSize = new System.Drawing.Size(36, 26);
             this.F2.Name = "F2";
             this.F2.ReadOnly = true;
-            this.F2.Size = new System.Drawing.Size(36, 32);
+            this.F2.Size = new System.Drawing.Size(36, 24);
             this.F2.TabIndex = 28;
             this.F2.Text = "P";
             this.F2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -475,7 +476,7 @@ namespace Chess
             this.G2.MinimumSize = new System.Drawing.Size(36, 26);
             this.G2.Name = "G2";
             this.G2.ReadOnly = true;
-            this.G2.Size = new System.Drawing.Size(36, 32);
+            this.G2.Size = new System.Drawing.Size(36, 24);
             this.G2.TabIndex = 27;
             this.G2.Text = "P";
             this.G2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -489,7 +490,7 @@ namespace Chess
             this.H2.MinimumSize = new System.Drawing.Size(36, 26);
             this.H2.Name = "H2";
             this.H2.ReadOnly = true;
-            this.H2.Size = new System.Drawing.Size(36, 32);
+            this.H2.Size = new System.Drawing.Size(36, 24);
             this.H2.TabIndex = 26;
             this.H2.Text = "P";
             this.H2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -503,7 +504,7 @@ namespace Chess
             this.B2.MinimumSize = new System.Drawing.Size(36, 26);
             this.B2.Name = "B2";
             this.B2.ReadOnly = true;
-            this.B2.Size = new System.Drawing.Size(36, 32);
+            this.B2.Size = new System.Drawing.Size(36, 24);
             this.B2.TabIndex = 25;
             this.B2.Text = "P";
             this.B2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -518,7 +519,7 @@ namespace Chess
             this.A2.MinimumSize = new System.Drawing.Size(36, 26);
             this.A2.Name = "A2";
             this.A2.ReadOnly = true;
-            this.A2.Size = new System.Drawing.Size(36, 32);
+            this.A2.Size = new System.Drawing.Size(36, 24);
             this.A2.TabIndex = 24;
             this.A2.Text = "P";
             this.A2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -533,7 +534,7 @@ namespace Chess
             this.C4.MinimumSize = new System.Drawing.Size(36, 26);
             this.C4.Name = "C4";
             this.C4.ReadOnly = true;
-            this.C4.Size = new System.Drawing.Size(36, 32);
+            this.C4.Size = new System.Drawing.Size(36, 24);
             this.C4.TabIndex = 47;
             this.C4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -546,7 +547,7 @@ namespace Chess
             this.D4.MinimumSize = new System.Drawing.Size(36, 26);
             this.D4.Name = "D4";
             this.D4.ReadOnly = true;
-            this.D4.Size = new System.Drawing.Size(36, 32);
+            this.D4.Size = new System.Drawing.Size(36, 24);
             this.D4.TabIndex = 46;
             this.D4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -560,7 +561,7 @@ namespace Chess
             this.E4.MinimumSize = new System.Drawing.Size(36, 26);
             this.E4.Name = "E4";
             this.E4.ReadOnly = true;
-            this.E4.Size = new System.Drawing.Size(36, 32);
+            this.E4.Size = new System.Drawing.Size(36, 24);
             this.E4.TabIndex = 45;
             this.E4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -573,7 +574,7 @@ namespace Chess
             this.F4.MinimumSize = new System.Drawing.Size(36, 26);
             this.F4.Name = "F4";
             this.F4.ReadOnly = true;
-            this.F4.Size = new System.Drawing.Size(36, 32);
+            this.F4.Size = new System.Drawing.Size(36, 24);
             this.F4.TabIndex = 44;
             this.F4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -587,7 +588,7 @@ namespace Chess
             this.G4.MinimumSize = new System.Drawing.Size(36, 26);
             this.G4.Name = "G4";
             this.G4.ReadOnly = true;
-            this.G4.Size = new System.Drawing.Size(36, 32);
+            this.G4.Size = new System.Drawing.Size(36, 24);
             this.G4.TabIndex = 43;
             this.G4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -600,7 +601,7 @@ namespace Chess
             this.H4.MinimumSize = new System.Drawing.Size(36, 26);
             this.H4.Name = "H4";
             this.H4.ReadOnly = true;
-            this.H4.Size = new System.Drawing.Size(36, 32);
+            this.H4.Size = new System.Drawing.Size(36, 24);
             this.H4.TabIndex = 42;
             this.H4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -613,7 +614,7 @@ namespace Chess
             this.B4.MinimumSize = new System.Drawing.Size(36, 26);
             this.B4.Name = "B4";
             this.B4.ReadOnly = true;
-            this.B4.Size = new System.Drawing.Size(36, 32);
+            this.B4.Size = new System.Drawing.Size(36, 24);
             this.B4.TabIndex = 41;
             this.B4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -627,7 +628,7 @@ namespace Chess
             this.A4.MinimumSize = new System.Drawing.Size(36, 26);
             this.A4.Name = "A4";
             this.A4.ReadOnly = true;
-            this.A4.Size = new System.Drawing.Size(36, 32);
+            this.A4.Size = new System.Drawing.Size(36, 24);
             this.A4.TabIndex = 40;
             this.A4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -640,7 +641,7 @@ namespace Chess
             this.C3.MinimumSize = new System.Drawing.Size(36, 26);
             this.C3.Name = "C3";
             this.C3.ReadOnly = true;
-            this.C3.Size = new System.Drawing.Size(36, 32);
+            this.C3.Size = new System.Drawing.Size(36, 24);
             this.C3.TabIndex = 39;
             this.C3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -654,7 +655,7 @@ namespace Chess
             this.D3.MinimumSize = new System.Drawing.Size(36, 26);
             this.D3.Name = "D3";
             this.D3.ReadOnly = true;
-            this.D3.Size = new System.Drawing.Size(36, 32);
+            this.D3.Size = new System.Drawing.Size(36, 24);
             this.D3.TabIndex = 38;
             this.D3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -667,7 +668,7 @@ namespace Chess
             this.E3.MinimumSize = new System.Drawing.Size(36, 26);
             this.E3.Name = "E3";
             this.E3.ReadOnly = true;
-            this.E3.Size = new System.Drawing.Size(36, 32);
+            this.E3.Size = new System.Drawing.Size(36, 24);
             this.E3.TabIndex = 37;
             this.E3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -681,7 +682,7 @@ namespace Chess
             this.F3.MinimumSize = new System.Drawing.Size(36, 26);
             this.F3.Name = "F3";
             this.F3.ReadOnly = true;
-            this.F3.Size = new System.Drawing.Size(36, 32);
+            this.F3.Size = new System.Drawing.Size(36, 24);
             this.F3.TabIndex = 36;
             this.F3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -694,7 +695,7 @@ namespace Chess
             this.G3.MinimumSize = new System.Drawing.Size(36, 26);
             this.G3.Name = "G3";
             this.G3.ReadOnly = true;
-            this.G3.Size = new System.Drawing.Size(36, 32);
+            this.G3.Size = new System.Drawing.Size(36, 24);
             this.G3.TabIndex = 35;
             this.G3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -708,7 +709,7 @@ namespace Chess
             this.H3.MinimumSize = new System.Drawing.Size(36, 26);
             this.H3.Name = "H3";
             this.H3.ReadOnly = true;
-            this.H3.Size = new System.Drawing.Size(36, 32);
+            this.H3.Size = new System.Drawing.Size(36, 24);
             this.H3.TabIndex = 34;
             this.H3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -722,7 +723,7 @@ namespace Chess
             this.B3.MinimumSize = new System.Drawing.Size(36, 26);
             this.B3.Name = "B3";
             this.B3.ReadOnly = true;
-            this.B3.Size = new System.Drawing.Size(36, 32);
+            this.B3.Size = new System.Drawing.Size(36, 24);
             this.B3.TabIndex = 33;
             this.B3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -735,7 +736,7 @@ namespace Chess
             this.A3.MinimumSize = new System.Drawing.Size(36, 26);
             this.A3.Name = "A3";
             this.A3.ReadOnly = true;
-            this.A3.Size = new System.Drawing.Size(36, 32);
+            this.A3.Size = new System.Drawing.Size(36, 24);
             this.A3.TabIndex = 32;
             this.A3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -750,7 +751,7 @@ namespace Chess
             this.C8.MinimumSize = new System.Drawing.Size(36, 26);
             this.C8.Name = "C8";
             this.C8.ReadOnly = true;
-            this.C8.Size = new System.Drawing.Size(36, 32);
+            this.C8.Size = new System.Drawing.Size(36, 24);
             this.C8.TabIndex = 79;
             this.C8.Text = "B";
             this.C8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -765,7 +766,7 @@ namespace Chess
             this.D8.MinimumSize = new System.Drawing.Size(36, 26);
             this.D8.Name = "D8";
             this.D8.ReadOnly = true;
-            this.D8.Size = new System.Drawing.Size(36, 32);
+            this.D8.Size = new System.Drawing.Size(36, 24);
             this.D8.TabIndex = 78;
             this.D8.Text = "Q";
             this.D8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -781,7 +782,7 @@ namespace Chess
             this.E8.MinimumSize = new System.Drawing.Size(36, 26);
             this.E8.Name = "E8";
             this.E8.ReadOnly = true;
-            this.E8.Size = new System.Drawing.Size(36, 32);
+            this.E8.Size = new System.Drawing.Size(36, 24);
             this.E8.TabIndex = 77;
             this.E8.Text = "K";
             this.E8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -796,7 +797,7 @@ namespace Chess
             this.F8.MinimumSize = new System.Drawing.Size(36, 26);
             this.F8.Name = "F8";
             this.F8.ReadOnly = true;
-            this.F8.Size = new System.Drawing.Size(36, 32);
+            this.F8.Size = new System.Drawing.Size(36, 24);
             this.F8.TabIndex = 76;
             this.F8.Text = "B";
             this.F8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -812,7 +813,7 @@ namespace Chess
             this.G8.MinimumSize = new System.Drawing.Size(36, 26);
             this.G8.Name = "G8";
             this.G8.ReadOnly = true;
-            this.G8.Size = new System.Drawing.Size(36, 32);
+            this.G8.Size = new System.Drawing.Size(36, 24);
             this.G8.TabIndex = 75;
             this.G8.Text = "Kn";
             this.G8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -827,7 +828,7 @@ namespace Chess
             this.H8.MinimumSize = new System.Drawing.Size(36, 26);
             this.H8.Name = "H8";
             this.H8.ReadOnly = true;
-            this.H8.Size = new System.Drawing.Size(36, 32);
+            this.H8.Size = new System.Drawing.Size(36, 24);
             this.H8.TabIndex = 74;
             this.H8.Text = "R";
             this.H8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -842,7 +843,7 @@ namespace Chess
             this.B8.MinimumSize = new System.Drawing.Size(36, 26);
             this.B8.Name = "B8";
             this.B8.ReadOnly = true;
-            this.B8.Size = new System.Drawing.Size(36, 32);
+            this.B8.Size = new System.Drawing.Size(36, 24);
             this.B8.TabIndex = 73;
             this.B8.Text = "Kn";
             this.B8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -858,7 +859,7 @@ namespace Chess
             this.A8.MinimumSize = new System.Drawing.Size(36, 26);
             this.A8.Name = "A8";
             this.A8.ReadOnly = true;
-            this.A8.Size = new System.Drawing.Size(36, 32);
+            this.A8.Size = new System.Drawing.Size(36, 24);
             this.A8.TabIndex = 72;
             this.A8.Text = "R";
             this.A8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -873,7 +874,7 @@ namespace Chess
             this.C7.MinimumSize = new System.Drawing.Size(36, 26);
             this.C7.Name = "C7";
             this.C7.ReadOnly = true;
-            this.C7.Size = new System.Drawing.Size(36, 32);
+            this.C7.Size = new System.Drawing.Size(36, 24);
             this.C7.TabIndex = 71;
             this.C7.Text = "P";
             this.C7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -889,7 +890,7 @@ namespace Chess
             this.D7.MinimumSize = new System.Drawing.Size(36, 26);
             this.D7.Name = "D7";
             this.D7.ReadOnly = true;
-            this.D7.Size = new System.Drawing.Size(36, 32);
+            this.D7.Size = new System.Drawing.Size(36, 24);
             this.D7.TabIndex = 70;
             this.D7.Text = "P";
             this.D7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -904,7 +905,7 @@ namespace Chess
             this.E7.MinimumSize = new System.Drawing.Size(36, 26);
             this.E7.Name = "E7";
             this.E7.ReadOnly = true;
-            this.E7.Size = new System.Drawing.Size(36, 32);
+            this.E7.Size = new System.Drawing.Size(36, 24);
             this.E7.TabIndex = 69;
             this.E7.Text = "P";
             this.E7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -920,7 +921,7 @@ namespace Chess
             this.F7.MinimumSize = new System.Drawing.Size(36, 26);
             this.F7.Name = "F7";
             this.F7.ReadOnly = true;
-            this.F7.Size = new System.Drawing.Size(36, 32);
+            this.F7.Size = new System.Drawing.Size(36, 24);
             this.F7.TabIndex = 68;
             this.F7.Text = "P";
             this.F7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -935,7 +936,7 @@ namespace Chess
             this.G7.MinimumSize = new System.Drawing.Size(36, 26);
             this.G7.Name = "G7";
             this.G7.ReadOnly = true;
-            this.G7.Size = new System.Drawing.Size(36, 32);
+            this.G7.Size = new System.Drawing.Size(36, 24);
             this.G7.TabIndex = 67;
             this.G7.Text = "P";
             this.G7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -951,7 +952,7 @@ namespace Chess
             this.H7.MinimumSize = new System.Drawing.Size(36, 26);
             this.H7.Name = "H7";
             this.H7.ReadOnly = true;
-            this.H7.Size = new System.Drawing.Size(36, 32);
+            this.H7.Size = new System.Drawing.Size(36, 24);
             this.H7.TabIndex = 66;
             this.H7.Text = "P";
             this.H7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -967,7 +968,7 @@ namespace Chess
             this.B7.MinimumSize = new System.Drawing.Size(36, 26);
             this.B7.Name = "B7";
             this.B7.ReadOnly = true;
-            this.B7.Size = new System.Drawing.Size(36, 32);
+            this.B7.Size = new System.Drawing.Size(36, 24);
             this.B7.TabIndex = 65;
             this.B7.Text = "P";
             this.B7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -982,7 +983,7 @@ namespace Chess
             this.A7.MinimumSize = new System.Drawing.Size(36, 26);
             this.A7.Name = "A7";
             this.A7.ReadOnly = true;
-            this.A7.Size = new System.Drawing.Size(36, 32);
+            this.A7.Size = new System.Drawing.Size(36, 24);
             this.A7.TabIndex = 64;
             this.A7.Text = "P";
             this.A7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -996,7 +997,7 @@ namespace Chess
             this.C5.MinimumSize = new System.Drawing.Size(36, 26);
             this.C5.Name = "C5";
             this.C5.ReadOnly = true;
-            this.C5.Size = new System.Drawing.Size(36, 32);
+            this.C5.Size = new System.Drawing.Size(36, 24);
             this.C5.TabIndex = 87;
             this.C5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1010,7 +1011,7 @@ namespace Chess
             this.D5.MinimumSize = new System.Drawing.Size(36, 26);
             this.D5.Name = "D5";
             this.D5.ReadOnly = true;
-            this.D5.Size = new System.Drawing.Size(36, 32);
+            this.D5.Size = new System.Drawing.Size(36, 24);
             this.D5.TabIndex = 86;
             this.D5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1023,7 +1024,7 @@ namespace Chess
             this.E5.MinimumSize = new System.Drawing.Size(36, 26);
             this.E5.Name = "E5";
             this.E5.ReadOnly = true;
-            this.E5.Size = new System.Drawing.Size(36, 32);
+            this.E5.Size = new System.Drawing.Size(36, 24);
             this.E5.TabIndex = 85;
             this.E5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1037,7 +1038,7 @@ namespace Chess
             this.F5.MinimumSize = new System.Drawing.Size(36, 26);
             this.F5.Name = "F5";
             this.F5.ReadOnly = true;
-            this.F5.Size = new System.Drawing.Size(36, 32);
+            this.F5.Size = new System.Drawing.Size(36, 24);
             this.F5.TabIndex = 84;
             this.F5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1050,7 +1051,7 @@ namespace Chess
             this.G5.MinimumSize = new System.Drawing.Size(36, 26);
             this.G5.Name = "G5";
             this.G5.ReadOnly = true;
-            this.G5.Size = new System.Drawing.Size(36, 32);
+            this.G5.Size = new System.Drawing.Size(36, 24);
             this.G5.TabIndex = 83;
             this.G5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1064,7 +1065,7 @@ namespace Chess
             this.H5.MinimumSize = new System.Drawing.Size(36, 26);
             this.H5.Name = "H5";
             this.H5.ReadOnly = true;
-            this.H5.Size = new System.Drawing.Size(36, 32);
+            this.H5.Size = new System.Drawing.Size(36, 24);
             this.H5.TabIndex = 82;
             this.H5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1078,7 +1079,7 @@ namespace Chess
             this.B5.MinimumSize = new System.Drawing.Size(36, 26);
             this.B5.Name = "B5";
             this.B5.ReadOnly = true;
-            this.B5.Size = new System.Drawing.Size(36, 32);
+            this.B5.Size = new System.Drawing.Size(36, 24);
             this.B5.TabIndex = 81;
             this.B5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1091,7 +1092,7 @@ namespace Chess
             this.A5.MinimumSize = new System.Drawing.Size(36, 26);
             this.A5.Name = "A5";
             this.A5.ReadOnly = true;
-            this.A5.Size = new System.Drawing.Size(36, 32);
+            this.A5.Size = new System.Drawing.Size(36, 24);
             this.A5.TabIndex = 80;
             this.A5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1105,7 +1106,7 @@ namespace Chess
             this.C6.MinimumSize = new System.Drawing.Size(36, 26);
             this.C6.Name = "C6";
             this.C6.ReadOnly = true;
-            this.C6.Size = new System.Drawing.Size(36, 32);
+            this.C6.Size = new System.Drawing.Size(36, 24);
             this.C6.TabIndex = 95;
             this.C6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1118,7 +1119,7 @@ namespace Chess
             this.D6.MinimumSize = new System.Drawing.Size(36, 26);
             this.D6.Name = "D6";
             this.D6.ReadOnly = true;
-            this.D6.Size = new System.Drawing.Size(36, 32);
+            this.D6.Size = new System.Drawing.Size(36, 24);
             this.D6.TabIndex = 94;
             this.D6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1132,7 +1133,7 @@ namespace Chess
             this.E6.MinimumSize = new System.Drawing.Size(36, 26);
             this.E6.Name = "E6";
             this.E6.ReadOnly = true;
-            this.E6.Size = new System.Drawing.Size(36, 32);
+            this.E6.Size = new System.Drawing.Size(36, 24);
             this.E6.TabIndex = 93;
             this.E6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1145,7 +1146,7 @@ namespace Chess
             this.F6.MinimumSize = new System.Drawing.Size(36, 26);
             this.F6.Name = "F6";
             this.F6.ReadOnly = true;
-            this.F6.Size = new System.Drawing.Size(36, 32);
+            this.F6.Size = new System.Drawing.Size(36, 24);
             this.F6.TabIndex = 92;
             this.F6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1159,7 +1160,7 @@ namespace Chess
             this.G6.MinimumSize = new System.Drawing.Size(36, 26);
             this.G6.Name = "G6";
             this.G6.ReadOnly = true;
-            this.G6.Size = new System.Drawing.Size(36, 32);
+            this.G6.Size = new System.Drawing.Size(36, 24);
             this.G6.TabIndex = 91;
             this.G6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1172,7 +1173,7 @@ namespace Chess
             this.H6.MinimumSize = new System.Drawing.Size(36, 26);
             this.H6.Name = "H6";
             this.H6.ReadOnly = true;
-            this.H6.Size = new System.Drawing.Size(36, 32);
+            this.H6.Size = new System.Drawing.Size(36, 24);
             this.H6.TabIndex = 90;
             this.H6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1185,7 +1186,7 @@ namespace Chess
             this.B6.MinimumSize = new System.Drawing.Size(36, 26);
             this.B6.Name = "B6";
             this.B6.ReadOnly = true;
-            this.B6.Size = new System.Drawing.Size(36, 32);
+            this.B6.Size = new System.Drawing.Size(36, 24);
             this.B6.TabIndex = 89;
             this.B6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1199,7 +1200,7 @@ namespace Chess
             this.A6.MinimumSize = new System.Drawing.Size(36, 26);
             this.A6.Name = "A6";
             this.A6.ReadOnly = true;
-            this.A6.Size = new System.Drawing.Size(36, 32);
+            this.A6.Size = new System.Drawing.Size(36, 24);
             this.A6.TabIndex = 88;
             this.A6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1210,7 +1211,7 @@ namespace Chess
             this.lblWhitePlayer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblWhitePlayer.Location = new System.Drawing.Point(53, 30);
             this.lblWhitePlayer.Name = "lblWhitePlayer";
-            this.lblWhitePlayer.Size = new System.Drawing.Size(127, 26);
+            this.lblWhitePlayer.Size = new System.Drawing.Size(87, 18);
             this.lblWhitePlayer.TabIndex = 96;
             this.lblWhitePlayer.Text = "White Move";
             // 
@@ -1218,7 +1219,7 @@ namespace Chess
             // 
             this.txtWhiteFrom.Location = new System.Drawing.Point(189, 27);
             this.txtWhiteFrom.Name = "txtWhiteFrom";
-            this.txtWhiteFrom.Size = new System.Drawing.Size(36, 32);
+            this.txtWhiteFrom.Size = new System.Drawing.Size(36, 24);
             this.txtWhiteFrom.TabIndex = 97;
             this.txtWhiteFrom.Text = "E7";
             // 
@@ -1226,7 +1227,7 @@ namespace Chess
             // 
             this.txtWhiteDestination.Location = new System.Drawing.Point(262, 27);
             this.txtWhiteDestination.Name = "txtWhiteDestination";
-            this.txtWhiteDestination.Size = new System.Drawing.Size(36, 32);
+            this.txtWhiteDestination.Size = new System.Drawing.Size(36, 24);
             this.txtWhiteDestination.TabIndex = 99;
             this.txtWhiteDestination.Text = "E5";
             // 
@@ -1246,7 +1247,7 @@ namespace Chess
             this.lblMessage.AutoSize = true;
             this.lblMessage.Location = new System.Drawing.Point(469, 250);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(0, 26);
+            this.lblMessage.Size = new System.Drawing.Size(0, 18);
             this.lblMessage.TabIndex = 101;
             // 
             // lblWhite
@@ -1254,98 +1255,98 @@ namespace Chess
             this.lblWhite.AutoSize = true;
             this.lblWhite.Location = new System.Drawing.Point(233, 30);
             this.lblWhite.Name = "lblWhite";
-            this.lblWhite.Size = new System.Drawing.Size(30, 26);
+            this.lblWhite.Size = new System.Drawing.Size(21, 18);
             this.lblWhite.TabIndex = 102;
             this.lblWhite.Text = "to";
             // 
-            // groupBox1
+            // grpBoard
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.C1);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.C6);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.D6);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.E6);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.F6);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.G6);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.H6);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.B6);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.A6);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.C5);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.D5);
-            this.groupBox1.Controls.Add(this.A1);
-            this.groupBox1.Controls.Add(this.E5);
-            this.groupBox1.Controls.Add(this.B1);
-            this.groupBox1.Controls.Add(this.F5);
-            this.groupBox1.Controls.Add(this.H1);
-            this.groupBox1.Controls.Add(this.G5);
-            this.groupBox1.Controls.Add(this.G1);
-            this.groupBox1.Controls.Add(this.H5);
-            this.groupBox1.Controls.Add(this.F1);
-            this.groupBox1.Controls.Add(this.B5);
-            this.groupBox1.Controls.Add(this.E1);
-            this.groupBox1.Controls.Add(this.A5);
-            this.groupBox1.Controls.Add(this.D1);
-            this.groupBox1.Controls.Add(this.C8);
-            this.groupBox1.Controls.Add(this.A2);
-            this.groupBox1.Controls.Add(this.D8);
-            this.groupBox1.Controls.Add(this.B2);
-            this.groupBox1.Controls.Add(this.E8);
-            this.groupBox1.Controls.Add(this.H2);
-            this.groupBox1.Controls.Add(this.F8);
-            this.groupBox1.Controls.Add(this.G2);
-            this.groupBox1.Controls.Add(this.G8);
-            this.groupBox1.Controls.Add(this.F2);
-            this.groupBox1.Controls.Add(this.H8);
-            this.groupBox1.Controls.Add(this.E2);
-            this.groupBox1.Controls.Add(this.B8);
-            this.groupBox1.Controls.Add(this.D2);
-            this.groupBox1.Controls.Add(this.A8);
-            this.groupBox1.Controls.Add(this.C2);
-            this.groupBox1.Controls.Add(this.C7);
-            this.groupBox1.Controls.Add(this.A3);
-            this.groupBox1.Controls.Add(this.D7);
-            this.groupBox1.Controls.Add(this.B3);
-            this.groupBox1.Controls.Add(this.E7);
-            this.groupBox1.Controls.Add(this.H3);
-            this.groupBox1.Controls.Add(this.F7);
-            this.groupBox1.Controls.Add(this.G3);
-            this.groupBox1.Controls.Add(this.G7);
-            this.groupBox1.Controls.Add(this.F3);
-            this.groupBox1.Controls.Add(this.H7);
-            this.groupBox1.Controls.Add(this.E3);
-            this.groupBox1.Controls.Add(this.B7);
-            this.groupBox1.Controls.Add(this.D3);
-            this.groupBox1.Controls.Add(this.A7);
-            this.groupBox1.Controls.Add(this.C3);
-            this.groupBox1.Controls.Add(this.C4);
-            this.groupBox1.Controls.Add(this.A4);
-            this.groupBox1.Controls.Add(this.D4);
-            this.groupBox1.Controls.Add(this.B4);
-            this.groupBox1.Controls.Add(this.E4);
-            this.groupBox1.Controls.Add(this.H4);
-            this.groupBox1.Controls.Add(this.F4);
-            this.groupBox1.Controls.Add(this.G4);
-            this.groupBox1.Location = new System.Drawing.Point(12, 89);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(426, 401);
-            this.groupBox1.TabIndex = 103;
-            this.groupBox1.TabStop = false;
+            this.grpBoard.BackColor = System.Drawing.Color.Transparent;
+            this.grpBoard.Controls.Add(this.C1);
+            this.grpBoard.Controls.Add(this.label1);
+            this.grpBoard.Controls.Add(this.label2);
+            this.grpBoard.Controls.Add(this.label3);
+            this.grpBoard.Controls.Add(this.label4);
+            this.grpBoard.Controls.Add(this.label5);
+            this.grpBoard.Controls.Add(this.label6);
+            this.grpBoard.Controls.Add(this.label7);
+            this.grpBoard.Controls.Add(this.C6);
+            this.grpBoard.Controls.Add(this.label8);
+            this.grpBoard.Controls.Add(this.D6);
+            this.grpBoard.Controls.Add(this.label9);
+            this.grpBoard.Controls.Add(this.E6);
+            this.grpBoard.Controls.Add(this.label10);
+            this.grpBoard.Controls.Add(this.F6);
+            this.grpBoard.Controls.Add(this.label11);
+            this.grpBoard.Controls.Add(this.G6);
+            this.grpBoard.Controls.Add(this.label12);
+            this.grpBoard.Controls.Add(this.H6);
+            this.grpBoard.Controls.Add(this.label13);
+            this.grpBoard.Controls.Add(this.B6);
+            this.grpBoard.Controls.Add(this.label14);
+            this.grpBoard.Controls.Add(this.A6);
+            this.grpBoard.Controls.Add(this.label15);
+            this.grpBoard.Controls.Add(this.C5);
+            this.grpBoard.Controls.Add(this.label16);
+            this.grpBoard.Controls.Add(this.D5);
+            this.grpBoard.Controls.Add(this.A1);
+            this.grpBoard.Controls.Add(this.E5);
+            this.grpBoard.Controls.Add(this.B1);
+            this.grpBoard.Controls.Add(this.F5);
+            this.grpBoard.Controls.Add(this.H1);
+            this.grpBoard.Controls.Add(this.G5);
+            this.grpBoard.Controls.Add(this.G1);
+            this.grpBoard.Controls.Add(this.H5);
+            this.grpBoard.Controls.Add(this.F1);
+            this.grpBoard.Controls.Add(this.B5);
+            this.grpBoard.Controls.Add(this.E1);
+            this.grpBoard.Controls.Add(this.A5);
+            this.grpBoard.Controls.Add(this.D1);
+            this.grpBoard.Controls.Add(this.C8);
+            this.grpBoard.Controls.Add(this.A2);
+            this.grpBoard.Controls.Add(this.D8);
+            this.grpBoard.Controls.Add(this.B2);
+            this.grpBoard.Controls.Add(this.E8);
+            this.grpBoard.Controls.Add(this.H2);
+            this.grpBoard.Controls.Add(this.F8);
+            this.grpBoard.Controls.Add(this.G2);
+            this.grpBoard.Controls.Add(this.G8);
+            this.grpBoard.Controls.Add(this.F2);
+            this.grpBoard.Controls.Add(this.H8);
+            this.grpBoard.Controls.Add(this.E2);
+            this.grpBoard.Controls.Add(this.B8);
+            this.grpBoard.Controls.Add(this.D2);
+            this.grpBoard.Controls.Add(this.A8);
+            this.grpBoard.Controls.Add(this.C2);
+            this.grpBoard.Controls.Add(this.C7);
+            this.grpBoard.Controls.Add(this.A3);
+            this.grpBoard.Controls.Add(this.D7);
+            this.grpBoard.Controls.Add(this.B3);
+            this.grpBoard.Controls.Add(this.E7);
+            this.grpBoard.Controls.Add(this.H3);
+            this.grpBoard.Controls.Add(this.F7);
+            this.grpBoard.Controls.Add(this.G3);
+            this.grpBoard.Controls.Add(this.G7);
+            this.grpBoard.Controls.Add(this.F3);
+            this.grpBoard.Controls.Add(this.H7);
+            this.grpBoard.Controls.Add(this.E3);
+            this.grpBoard.Controls.Add(this.B7);
+            this.grpBoard.Controls.Add(this.D3);
+            this.grpBoard.Controls.Add(this.A7);
+            this.grpBoard.Controls.Add(this.C3);
+            this.grpBoard.Controls.Add(this.C4);
+            this.grpBoard.Controls.Add(this.A4);
+            this.grpBoard.Controls.Add(this.D4);
+            this.grpBoard.Controls.Add(this.B4);
+            this.grpBoard.Controls.Add(this.E4);
+            this.grpBoard.Controls.Add(this.H4);
+            this.grpBoard.Controls.Add(this.F4);
+            this.grpBoard.Controls.Add(this.G4);
+            this.grpBoard.Location = new System.Drawing.Point(12, 89);
+            this.grpBoard.Name = "grpBoard";
+            this.grpBoard.Size = new System.Drawing.Size(426, 401);
+            this.grpBoard.TabIndex = 103;
+            this.grpBoard.TabStop = false;
             // 
             // grpWhite
             // 
@@ -1379,7 +1380,7 @@ namespace Chess
             this.lblBlackPlayer.BackColor = System.Drawing.Color.Transparent;
             this.lblBlackPlayer.Location = new System.Drawing.Point(53, 30);
             this.lblBlackPlayer.Name = "lblBlackPlayer";
-            this.lblBlackPlayer.Size = new System.Drawing.Size(125, 26);
+            this.lblBlackPlayer.Size = new System.Drawing.Size(86, 18);
             this.lblBlackPlayer.TabIndex = 96;
             this.lblBlackPlayer.Text = "Black Move";
             // 
@@ -1387,7 +1388,7 @@ namespace Chess
             // 
             this.txtBlackFrom.Location = new System.Drawing.Point(189, 27);
             this.txtBlackFrom.Name = "txtBlackFrom";
-            this.txtBlackFrom.Size = new System.Drawing.Size(36, 32);
+            this.txtBlackFrom.Size = new System.Drawing.Size(36, 24);
             this.txtBlackFrom.TabIndex = 97;
             this.txtBlackFrom.Text = "D2";
             // 
@@ -1396,7 +1397,7 @@ namespace Chess
             this.lblBlack.AutoSize = true;
             this.lblBlack.Location = new System.Drawing.Point(232, 30);
             this.lblBlack.Name = "lblBlack";
-            this.lblBlack.Size = new System.Drawing.Size(30, 26);
+            this.lblBlack.Size = new System.Drawing.Size(21, 18);
             this.lblBlack.TabIndex = 102;
             this.lblBlack.Text = "to";
             // 
@@ -1404,7 +1405,7 @@ namespace Chess
             // 
             this.txtBlackDestination.Location = new System.Drawing.Point(262, 27);
             this.txtBlackDestination.Name = "txtBlackDestination";
-            this.txtBlackDestination.Size = new System.Drawing.Size(36, 32);
+            this.txtBlackDestination.Size = new System.Drawing.Size(36, 24);
             this.txtBlackDestination.TabIndex = 99;
             this.txtBlackDestination.Text = "D4";
             // 
@@ -1425,7 +1426,7 @@ namespace Chess
             this.lblBlackCaptures.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblBlackCaptures.Location = new System.Drawing.Point(459, 22);
             this.lblBlackCaptures.Name = "lblBlackCaptures";
-            this.lblBlackCaptures.Size = new System.Drawing.Size(0, 26);
+            this.lblBlackCaptures.Size = new System.Drawing.Size(0, 18);
             this.lblBlackCaptures.TabIndex = 106;
             // 
             // lblWhiteCaptures
@@ -1434,20 +1435,32 @@ namespace Chess
             this.lblWhiteCaptures.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblWhiteCaptures.Location = new System.Drawing.Point(459, 492);
             this.lblWhiteCaptures.Name = "lblWhiteCaptures";
-            this.lblWhiteCaptures.Size = new System.Drawing.Size(0, 26);
+            this.lblWhiteCaptures.Size = new System.Drawing.Size(0, 18);
             this.lblWhiteCaptures.TabIndex = 107;
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnReset.Location = new System.Drawing.Point(462, 533);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 35);
+            this.btnReset.TabIndex = 108;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // ChessForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SandyBrown;
             this.ClientSize = new System.Drawing.Size(922, 584);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblWhiteCaptures);
             this.Controls.Add(this.lblBlackCaptures);
             this.Controls.Add(this.grpBlack);
             this.Controls.Add(this.grpWhite);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpBoard);
             this.Controls.Add(this.lblMessage);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -1455,8 +1468,8 @@ namespace Chess
             this.Name = "ChessForm";
             this.Text = "Chess";
             this.Load += new System.EventHandler(this.GameBoard_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpBoard.ResumeLayout(false);
+            this.grpBoard.PerformLayout();
             this.grpWhite.ResumeLayout(false);
             this.grpWhite.PerformLayout();
             this.grpBlack.ResumeLayout(false);
@@ -1559,7 +1572,7 @@ namespace Chess
         private System.Windows.Forms.Button btnWhiteMove;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Label lblWhite;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpBoard;
         private System.Windows.Forms.GroupBox grpWhite;
         private System.Windows.Forms.GroupBox grpBlack;
         private System.Windows.Forms.Label lblBlackPlayer;
@@ -1569,6 +1582,7 @@ namespace Chess
         private System.Windows.Forms.Button btnBlackMove;
         private System.Windows.Forms.Label lblBlackCaptures;
         private System.Windows.Forms.Label lblWhiteCaptures;
+        private System.Windows.Forms.Button btnReset;
     }
 }
 

@@ -27,6 +27,9 @@ namespace Chess
 
         private void InitializeLocations()
         {
+            if (Locations != null)
+                Locations = null;
+
             Locations = new List<Location>();
 
             string[] cols = new string[] { "A", "B", "C", "D", "E", "F", "G", "H" };
@@ -44,6 +47,9 @@ namespace Chess
 
         private void InitializePlayers()
         {
+            if (Players != null)
+                Players = null;
+
             Players = new List<Player>();
 
             if (Players.Count >= 2)
@@ -64,15 +70,18 @@ namespace Chess
         {
             foreach (var player in Players)
             {
+                if (player.Pieces != null)
+                    player.Pieces = null;
+
                 if (player.PlayerColor == Color.Black)
                 {
                     ChessPiece one = new Rook("R1", "R", player.PlayerColor, GetLocation("A1"), null, false) as ChessPiece;
-                    //ChessPiece two = new ChessPiece("Kn1", "Kn", player.PlayerColor, GetLocation("B1"), null);
+                    ChessPiece two = new Knight("Kn1", "Kn", player.PlayerColor, GetLocation("B1"), null, true) as ChessPiece;
                     //ChessPiece three = new ChessPiece("B1", "B", player.PlayerColor, GetLocation("C1"), null);
                     //ChessPiece four = new ChessPiece("Q", "Q", player.PlayerColor, GetLocation("D1"), null);
                     //ChessPiece five = new ChessPiece("K", "K", player.PlayerColor, GetLocation("E1"), null);
                     //ChessPiece six = new ChessPiece("B2", "B", player.PlayerColor, GetLocation("F1"), null);
-                    //ChessPiece seven = new ChessPiece("Kn2", "Kn", player.PlayerColor, GetLocation("G1"), null);
+                    ChessPiece seven = new Knight("Kn2", "Kn", player.PlayerColor, GetLocation("G1"), null, true) as ChessPiece;
                     ChessPiece eight = new Rook("R2", "R", player.PlayerColor, GetLocation("H1"), null, false) as ChessPiece;
                     ChessPiece nine = new Pawn("P1", "P", player.PlayerColor, GetLocation("A2"), null, false) as ChessPiece;
                     ChessPiece ten = new Pawn("P1", "P", player.PlayerColor, GetLocation("B2"), null, false) as ChessPiece;
@@ -85,12 +94,12 @@ namespace Chess
 
                     player.Pieces = new List<ChessPiece>();
                     player.Pieces.Add(one);
-                    //player.Pieces.Add(two);
+                    player.Pieces.Add(two);
                     //player.Pieces.Add(three);
                     //player.Pieces.Add(four);
                     //player.Pieces.Add(five);
                     //player.Pieces.Add(six);
-                    //player.Pieces.Add(seven);
+                    player.Pieces.Add(seven);
                     player.Pieces.Add(eight);
                     player.Pieces.Add(nine);
                     player.Pieces.Add(ten);
@@ -104,12 +113,12 @@ namespace Chess
                 else
                 {
                     ChessPiece one = new Rook("R3", "R", player.PlayerColor, GetLocation("A8"), null, false) as ChessPiece;
-                    //ChessPiece two = new ChessPiece("Kn3", "Kn", player.PlayerColor, GetLocation("B8"), null);
+                    ChessPiece two = new Knight("Kn3", "Kn", player.PlayerColor, GetLocation("B8"), null, true) as ChessPiece;
                     //ChessPiece three = new ChessPiece("B3", "B", player.PlayerColor, GetLocation("C8"), null);
                     //ChessPiece four = new ChessPiece("Q", "Q", player.PlayerColor, GetLocation("D8"), null);
                     //ChessPiece five = new ChessPiece("K", "K", player.PlayerColor, GetLocation("E8"), null);
                     //ChessPiece six = new ChessPiece("B4", "B", player.PlayerColor, GetLocation("F8"), null);
-                    //ChessPiece seven = new ChessPiece("Kn4", "Kn", player.PlayerColor, GetLocation("G8"), null);
+                    ChessPiece seven = new Knight("Kn4", "Kn", player.PlayerColor, GetLocation("G8"), null, true) as ChessPiece;
                     ChessPiece eight = new Rook("R4", "R", player.PlayerColor, GetLocation("H8"), null, false) as ChessPiece;
                     ChessPiece nine = new Pawn("P7", "P", player.PlayerColor, GetLocation("A7"), null, false) as ChessPiece;
                     ChessPiece ten = new Pawn("P8", "P", player.PlayerColor, GetLocation("B7"), null, false) as ChessPiece;
@@ -122,12 +131,12 @@ namespace Chess
 
                     player.Pieces = new List<ChessPiece>();
                     player.Pieces.Add(one);
-                    //player.Pieces.Add(two);
+                    player.Pieces.Add(two);
                     //player.Pieces.Add(three);
                     //player.Pieces.Add(four);
                     //player.Pieces.Add(five);
                     //player.Pieces.Add(six);
-                    //player.Pieces.Add(seven);
+                    player.Pieces.Add(seven);
                     player.Pieces.Add(eight);
                     player.Pieces.Add(nine);
                     player.Pieces.Add(ten);
@@ -198,6 +207,7 @@ namespace Chess
             return false;
         }
 
+        // ToDo: Add case for Knight
         public bool DidMovePiece(
             Player player, Player opponent, Location origin, Location destination, ChessPiece piece)
         {
@@ -212,11 +222,14 @@ namespace Chess
             // ToDo: Finish switch for rest of pieces and their DidMove methods!!!
             switch (piece)
             {
+                case Pawn pawn:
+                    didMove = pawn.DidMove(player, opponent, origin, destination);
+                    break;
                 case Rook rook:
                     didMove = rook.DidMove(player, opponent, origin, destination);
                     break;
-                case Pawn pawn:
-                    didMove = pawn.DidMove(player, opponent, origin, destination);
+                case Knight knight:
+                    didMove = knight.DidMove(player, opponent, origin, destination);
                     break;
                 case null:                    
                     break;

@@ -13,7 +13,7 @@ namespace Chess
     public partial class ChessForm : Form
     {
         // Start a new game.
-        readonly GameController Game = new GameController();
+        private GameController game;
 
         public ChessForm()
         {
@@ -22,26 +22,7 @@ namespace Chess
 
         private void GameBoard_Load(object sender, EventArgs e)
         {
-            // Clear all textboxes.
-            ClearTextboxes();
-            grpBlack.Visible = false;
-            grpBlack.Enabled = false;
-
-            // Set up the pieces in the textboxes for each player
-            for (int i = 0; i < Game.Players.Count; i++)
-            {
-                foreach (var piece in Game.Players[i].Pieces)
-                {
-                    if (FindControl(this, piece.CurrentLocation.Coordinate) != null)
-                    {
-                        TextBox tbx = FindControl(this, piece.CurrentLocation.Coordinate) as TextBox;
-                        tbx.Text = piece.Text;
-                        SetBackcolorOfBoard(tbx);
-                        tbx.ForeColor = Game.Players[i].PlayerColor;
-                        tbx.ReadOnly = true;
-                    }
-                }
-            }            
+            LoadGameboard();
         }
 
         private void btnWhiteMove_Click(object sender, EventArgs e)
@@ -51,12 +32,12 @@ namespace Chess
             int white = 1;
 
             // Get white player's piece's from and to locations
-            Location origin = Game.GetLocation(txtWhiteFrom.Text);
-            Location destination = Game.GetLocation(txtWhiteDestination.Text);
+            Location origin = game.GetLocation(txtWhiteFrom.Text);
+            Location destination = game.GetLocation(txtWhiteDestination.Text);
 
             //Try to execute the move
             string message = string.Empty;
-            bool didExecuteMove = Game.DidExecuteMove(white, origin, destination, out message);
+            bool didExecuteMove = game.DidExecuteMove(white, origin, destination, out message);
 
             if (didExecuteMove)
             {
@@ -84,12 +65,12 @@ namespace Chess
             int black = 0;
 
             // Get black player's piece's from and to locations
-            Location origin = Game.GetLocation(txtBlackFrom.Text);
-            Location destination = Game.GetLocation(txtBlackDestination.Text);
+            Location origin = game.GetLocation(txtBlackFrom.Text);
+            Location destination = game.GetLocation(txtBlackDestination.Text);
 
             //Try to execute the move
             string message = string.Empty;
-            bool didExecuteMove = Game.DidExecuteMove(black, origin, destination, out message);
+            bool didExecuteMove = game.DidExecuteMove(black, origin, destination, out message);
 
             if (didExecuteMove)
             {
@@ -110,6 +91,50 @@ namespace Chess
             }
         }
 
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            LoadGameboard();
+        }
+
+
+        #region Private Methods
+
+        // ToDo: Finish resetting of board, fix issue with Move not enabled after Reset
+        private void LoadGameboard()
+        {
+            game = new GameController();
+
+            // Clear all textboxes
+            ClearTextboxes(Controls);
+
+            // Set other controls to initial state
+            grpWhite.Visible = true;
+            grpWhite.Enabled = true;
+            lblWhiteCaptures.Text = string.Empty;
+
+            grpBlack.Visible = false;
+            grpBlack.Enabled = false;
+            lblBlackCaptures.Text = string.Empty;
+
+            lblMessage.Text = string.Empty;
+
+            // Set up the pieces in the textboxes for each player
+            for (int i = 0; i < game.Players.Count; i++)
+            {
+                foreach (var piece in game.Players[i].Pieces)
+                {
+                    if (FindControl(this, piece.CurrentLocation.Coordinate) != null)
+                    {
+                        TextBox tbx = FindControl(this, piece.CurrentLocation.Coordinate) as TextBox;
+                        tbx.Text = piece.Text;
+                        SetBackcolorOfBoard(tbx);
+                        tbx.ForeColor = game.Players[i].PlayerColor;
+                        tbx.ReadOnly = true;
+                    }
+                }
+            }
+        }       
+
         private void UpdateBoard(int playerIndex, Location origin, Location destination, string message)
         {
             TextBox originTextbox = FindControl(this, origin.Coordinate) as TextBox;
@@ -118,7 +143,7 @@ namespace Chess
             destinationTextbox.Text = originTextbox.Text;
             // "Changing" backcolor allows forecolor of readonly textbox to be changed
             destinationTextbox.BackColor = destinationTextbox.BackColor;
-            destinationTextbox.ForeColor = Game.Players[playerIndex].PlayerColor;
+            destinationTextbox.ForeColor = game.Players[playerIndex].PlayerColor;
             originTextbox.Text = string.Empty;
 
             lblMessage.ForeColor = Color.Black;
@@ -130,9 +155,9 @@ namespace Chess
             StringBuilder sb = new StringBuilder();
             int index = 0;
 
-            if (Game.Players[playerIndex].CapturedPieces != null)
+            if (game.Players[playerIndex].CapturedPieces != null)
             {
-                foreach (var capturedPiece in Game.Players[playerIndex].CapturedPieces)
+                foreach (var capturedPiece in game.Players[playerIndex].CapturedPieces)
                 {
                     sb.Append($"{capturedPiece.Text} ");
                     if (index == 8)
@@ -142,12 +167,12 @@ namespace Chess
 
                 Label capturesLabel = FindControl(this, labelName) as Label;
                 capturesLabel.Text = sb.ToString();
-            }        
+            }
         }
-        
-        private void ClearTextboxes()
+
+        private void ClearTextboxes(Control.ControlCollection controls)
         {
-            foreach (var ctrl in Controls)
+            foreach (Control ctrl in controls)
             {
                 if (ctrl is TextBox)
                 {
@@ -157,6 +182,8 @@ namespace Chess
                     tbx.ForeColor = Color.Black;
                     tbx.ReadOnly = false;
                 }
+
+                ClearTextboxes(ctrl.Controls);
             }
         }
 
@@ -167,13 +194,15 @@ namespace Chess
         private Control FindControl(Control parent, string name)
         {
             // Check the parent.
-            if (parent.Name == name) return parent;
+            if (parent.Name == name)
+                return parent;
 
             // Recursively search the parent's children.
             foreach (Control ctl in parent.Controls)
             {
                 Control found = FindControl(ctl, name);
-                if (found != null) return found;
+                if (found != null) 
+                    return found;
             }
 
             // If we still haven't found it, it's not here.
@@ -197,10 +226,10 @@ namespace Chess
 
             if (rowPart % 2 == 0)
                 return true;
-            else 
-                return false;           
+            else
+                return false;
         }
-        
+
         private bool IsBlackSquare(string name)
         {
             string colPart = name.Substring(0, 1);
@@ -208,7 +237,7 @@ namespace Chess
             if (IsInEvenRow(name))
             {
                 List<string> evenLetters = new List<string>() { "A", "C", "E", "G" };
-                if (evenLetters.Contains(colPart)) 
+                if (evenLetters.Contains(colPart))
                     return true;
             }
             else
@@ -222,5 +251,8 @@ namespace Chess
             // If we got here, doesn't meet any of the criteria.
             return false;
         }
+
+        #endregion
+       
     }
 }

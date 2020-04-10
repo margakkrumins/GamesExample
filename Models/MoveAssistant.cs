@@ -177,6 +177,38 @@ namespace Models
             return true;
         }
 
+        public static bool IsLegalMoveForKnight(
+            Player player, Player opponent, Location origin, Location destination, int limit = 7, bool canRetreat = true)
+        {            
+            // Get row and column numbers
+            int originRow = GetRowNumber(origin.Coordinate);
+            int destRow = GetRowNumber(destination.Coordinate);
+            bool isRowIncremented = IsRowIncremented(originRow, destRow);
+            int maxSquaresForRows = CalculateMaxSquares(originRow, destRow, isRowIncremented);
+
+            int originCol = GetColumnNumber(origin.Coordinate);
+            int destCol = GetColumnNumber(destination.Coordinate);
+            bool isColIncremented = IsColumnIncremented(originCol, destCol);
+            int maxSquaresForColumns = CalculateMaxSquares(originCol, destCol, isColIncremented);
+
+             // Check if is L-Shaped (2 & 1 or 1 & 2)
+            if (maxSquaresForRows > maxSquaresForColumns)
+            {
+                // Is attempt at 2 through rows and 1 through columns
+                if (maxSquaresForRows != limit || maxSquaresForColumns != 1)
+                    return false;                
+            }
+            else
+            {
+                // Is attempt at 1 through rows and 2 through columns
+                if (maxSquaresForRows != 1 || maxSquaresForColumns != limit)
+                    return false;                
+            }
+
+            // If got here, piece can move to destination
+            return true;
+        }
+
         public static bool IsCapture(Player opponent, Location destination)
         {
             return opponent.Pieces
