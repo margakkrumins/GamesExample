@@ -77,10 +77,10 @@ namespace Chess
                 {
                     ChessPiece one = new Rook("R1", "R", player.PlayerColor, GetLocation("A1"), null, false) as ChessPiece;
                     ChessPiece two = new Knight("Kn1", "Kn", player.PlayerColor, GetLocation("B1"), null, true) as ChessPiece;
-                    //ChessPiece three = new ChessPiece("B1", "B", player.PlayerColor, GetLocation("C1"), null);
+                    ChessPiece three = new Bishop("B1", "B", player.PlayerColor, GetLocation("C1"), null, false) as ChessPiece;
                     //ChessPiece four = new ChessPiece("Q", "Q", player.PlayerColor, GetLocation("D1"), null);
                     //ChessPiece five = new ChessPiece("K", "K", player.PlayerColor, GetLocation("E1"), null);
-                    //ChessPiece six = new ChessPiece("B2", "B", player.PlayerColor, GetLocation("F1"), null);
+                    ChessPiece six = new Bishop("B2", "B", player.PlayerColor, GetLocation("F1"), null, false) as ChessPiece;
                     ChessPiece seven = new Knight("Kn2", "Kn", player.PlayerColor, GetLocation("G1"), null, true) as ChessPiece;
                     ChessPiece eight = new Rook("R2", "R", player.PlayerColor, GetLocation("H1"), null, false) as ChessPiece;
                     ChessPiece nine = new Pawn("P1", "P", player.PlayerColor, GetLocation("A2"), null, false) as ChessPiece;
@@ -95,10 +95,10 @@ namespace Chess
                     player.Pieces = new List<ChessPiece>();
                     player.Pieces.Add(one);
                     player.Pieces.Add(two);
-                    //player.Pieces.Add(three);
+                    player.Pieces.Add(three);
                     //player.Pieces.Add(four);
                     //player.Pieces.Add(five);
-                    //player.Pieces.Add(six);
+                    player.Pieces.Add(six);
                     player.Pieces.Add(seven);
                     player.Pieces.Add(eight);
                     player.Pieces.Add(nine);
@@ -114,10 +114,10 @@ namespace Chess
                 {
                     ChessPiece one = new Rook("R3", "R", player.PlayerColor, GetLocation("A8"), null, false) as ChessPiece;
                     ChessPiece two = new Knight("Kn3", "Kn", player.PlayerColor, GetLocation("B8"), null, true) as ChessPiece;
-                    //ChessPiece three = new ChessPiece("B3", "B", player.PlayerColor, GetLocation("C8"), null);
+                    ChessPiece three = new Bishop("B3", "B", player.PlayerColor, GetLocation("C8"), null, false) as ChessPiece;
                     //ChessPiece four = new ChessPiece("Q", "Q", player.PlayerColor, GetLocation("D8"), null);
                     //ChessPiece five = new ChessPiece("K", "K", player.PlayerColor, GetLocation("E8"), null);
-                    //ChessPiece six = new ChessPiece("B4", "B", player.PlayerColor, GetLocation("F8"), null);
+                    ChessPiece six = new Bishop("B4", "B", player.PlayerColor, GetLocation("F8"), null, false) as ChessPiece;
                     ChessPiece seven = new Knight("Kn4", "Kn", player.PlayerColor, GetLocation("G8"), null, true) as ChessPiece;
                     ChessPiece eight = new Rook("R4", "R", player.PlayerColor, GetLocation("H8"), null, false) as ChessPiece;
                     ChessPiece nine = new Pawn("P7", "P", player.PlayerColor, GetLocation("A7"), null, false) as ChessPiece;
@@ -132,10 +132,10 @@ namespace Chess
                     player.Pieces = new List<ChessPiece>();
                     player.Pieces.Add(one);
                     player.Pieces.Add(two);
-                    //player.Pieces.Add(three);
+                    player.Pieces.Add(three);
                     //player.Pieces.Add(four);
                     //player.Pieces.Add(five);
-                    //player.Pieces.Add(six);
+                    player.Pieces.Add(six);
                     player.Pieces.Add(seven);
                     player.Pieces.Add(eight);
                     player.Pieces.Add(nine);
@@ -230,6 +230,9 @@ namespace Chess
                     break;
                 case Knight knight:
                     didMove = knight.DidMove(player, opponent, origin, destination);
+                    break;
+                case Bishop bishop:
+                    didMove = bishop.DidMove(player, opponent, origin, destination);
                     break;
                 case null:                    
                     break;

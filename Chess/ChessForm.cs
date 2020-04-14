@@ -25,6 +25,8 @@ namespace Chess
             LoadGameboard();
         }
 
+        // ToDo: Protect against lower case column inputs
+        // ToDo: Figure out why inputs retaining previous entries between moves
         private void btnWhiteMove_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
@@ -36,7 +38,7 @@ namespace Chess
             Location destination = game.GetLocation(txtWhiteDestination.Text);
 
             //Try to execute the move
-            string message = string.Empty;
+            string message;
             bool didExecuteMove = game.DidExecuteMove(white, origin, destination, out message);
 
             if (didExecuteMove)
@@ -111,13 +113,15 @@ namespace Chess
             grpWhite.Visible = true;
             grpWhite.Enabled = true;
             lblWhiteCaptures.Text = string.Empty;
+            txtBlackFrom.Focus();
+            btnWhiteMove.Enabled = true;
 
             grpBlack.Visible = false;
             grpBlack.Enabled = false;
             lblBlackCaptures.Text = string.Empty;
 
             lblMessage.Text = string.Empty;
-
+            
             // Set up the pieces in the textboxes for each player
             for (int i = 0; i < game.Players.Count; i++)
             {

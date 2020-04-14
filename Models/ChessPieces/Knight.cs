@@ -1,7 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Drawing;
 
 namespace Models.ChessPieces
 {
@@ -22,8 +19,6 @@ namespace Models.ChessPieces
         public override bool DidMove(
           Player player, Player opponent, Location origin, Location destination)
         {
-            var piece = player.Pieces.Find(p => p.CurrentLocation == origin);
-
             // Can move through L-Shaped Knight's Move
             bool isLegalMoveForKnight = 
                 MoveAssistant.IsLegalMoveForKnight(player, opponent, origin, destination, 2);
